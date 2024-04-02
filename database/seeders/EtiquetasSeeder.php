@@ -54,5 +54,6 @@ class EtiquetasSeeder extends Seeder
             'nom_etiqueta' => 'Discoteca',
             'created_at' => now(),
             'updated_at' => now()
-        ]);    }
+        ]);
+    }
 }
