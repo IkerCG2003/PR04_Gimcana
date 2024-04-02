@@ -10,6 +10,11 @@ class PruebasSitiosSeeder extends Seeder
 {
     public function run(): void
     {
-        
+        DB::table('tbl_pruebas_sitios')->insert([
+            'id_prueba' => 1,
+            'id_sitio' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }
