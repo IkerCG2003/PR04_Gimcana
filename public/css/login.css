@@ -46,7 +46,7 @@ body {
     flex-direction: column;
 }
 
-.login-form form input {
+.login-form form input::placeholder {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
@@ -71,4 +71,33 @@ body {
 
 .form-group {
     padding-bottom: 10px;
-}  
+}
+
+/* Media Query para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    .login-form {
+        width: 90%;
+    }
+    .login-form h2 {
+        font-size: 24px;
+    }
+    .login-form form input {
+        padding: 5px;
+    }
+    .login-form form button {
+        padding: 5px;
+        width: 100%;
+    }
+    .login-form form button:hover {
+        background-color: #0056b3;
+    }
+    .form-group {
+        padding-bottom: 5px;
+    }
+    .login-form p {
+        font-size: 10px;
+    }
+    .login-form form input::placeholder {
+        font-size: 8px;
+    }
+}

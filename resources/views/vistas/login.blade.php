@@ -32,7 +32,7 @@
 
                     <div class="form-group">
                         <label for="email">Correo electrónico:</label>
-                        <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Ingresa tu correo electrónico">
+                        <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Ingresa tu email">
                         @error('email')
                             <p class="invalid-feedback">{{ $message }}</p>
                         @enderror
