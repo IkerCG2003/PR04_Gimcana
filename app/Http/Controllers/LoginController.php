@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Usuarios;
 
 class LoginController extends Controller
 {
@@ -18,22 +19,32 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:9|max:20',
         ], [
-            'email.required' => 'El campo correo electrónico es obligatorio',
+            'email.required' => 'El correo electrónico es obligatorio',
             'email.email' => 'El correo electrónico debe ser una dirección de correo válida',
-            'password.required' => 'El campo contraseña es obligatorio',
+            'password.required' => 'La contraseña es obligatoria',
             'password.min' => 'La contraseña debe tener al menos 9 caracteres',
             'password.max' => 'La contraseña no debe tener más de 20 caracteres',
         ]);
-
-        if (Auth::attempt($credentials)) {
+    
+        // Recuperamos el usuario por su correo electrónico
+        $user = Usuarios::where('email_usuario', $credentials['email'])->first();
+    
+        // Verificamos si el usuario existe y si la contraseña es correcta
+        if ($user && password_verify($credentials['password'], $user->pwd_usuario)) 
+        {
             // Autenticación exitosa, establecer variables de sesión
-            $user = Auth::user();
+            $request->session()->put('id', $user->id);
+            $request->session()->put('nombre', $user->nom_usuario);
+            $request->session()->put('apellido', $user->apell_usuario);
             $request->session()->put('email', $user->email_usuario);
-            $request->session()->put('rol', $user->rol_usuario); // Guardar el rol en la sesión
-
+            $request->session()->put('rol', $user->rol_usuario);
+    
             // Redirigir al usuario a la página de éxito
             return redirect()->route('exito');
-        } else {
+        } 
+        
+        else
+        {
             // Autenticación fallida, redirigir de vuelta con un mensaje de error
             return redirect()->back()->with('error', 'Credenciales incorrectas');
         }

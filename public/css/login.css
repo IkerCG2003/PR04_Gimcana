@@ -62,6 +62,7 @@ body {
     cursor: pointer;
     align-self: center;
     margin-top: 10px;
+    width: 100%;
 }
 
 .login-form form button:hover {
