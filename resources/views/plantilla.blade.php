@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{ asset('/src/location-dot-solid(1).svg') }}" type="image/x-icon">
     <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -46,7 +47,7 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-bookmark"></i> Guardados</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Link</a>
@@ -56,6 +57,14 @@
                 </div>
             </div>
         </nav>
+
+        <div class="etiquetas">
+            @foreach ($etiquetas as $etiqueta)
+                <div class="etiqueta">
+                    <p>{{ $etiqueta->nom_etiqueta }}</p>
+                </div>
+            @endforeach
+        </div>
 
     </header>
 

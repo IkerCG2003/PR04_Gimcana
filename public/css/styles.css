@@ -18,7 +18,6 @@ header {
     text-align: center;
     align-items: center;
     padding: 0 2.5vh;
-    background-color: #1a73e8;
     top: 0;
     z-index: 1;
 }
@@ -45,16 +44,16 @@ header img {
 }
 
 i {
-    color: white;
+    color: black;
 }
 
 .fixed-top {
     padding: 0;
     border-radius: 10vh;
     margin: 1vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-toggler {
@@ -73,9 +72,9 @@ i {
     border-radius: 3vh;
     margin: 1vh;
     height: fit-content;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-brand {
@@ -135,8 +134,53 @@ i {
 
 
 
-/* MAPA */
+/* ETIQUETAS */
 
+/* header {
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    padding: 0 2.5vh;
+    top: 0;
+    z-index: 1;
+} */
+
+.etiquetas {
+    width: 90vw;
+    position: fixed;
+    display: flex;
+    top: 8vh;
+    z-index: 1000;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.etiquetas::-webkit-scrollbar {
+    height: 0;
+    background-color: transparent;
+}
+
+.etiquetas::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 3vh;
+    border: solid 2px rgb(190, 190, 190);
+}
+
+.etiqueta {
+    display: inline-block;
+    border-radius: 3vh;
+    padding: 0.5vh 0;
+    background-color: white;
+    width: max-content;
+    margin: 0 0.25vh;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+
+
+/* MAPA */
 #map {
     height: 100vh;
 }
@@ -146,14 +190,18 @@ i {
 }
 
 /* INFO ABAJO */
-
 #infoabajo {
     background-color: white;
     width: 100%;
-    padding: 1vh;
+    padding: 2vh;
     border-radius: 3vh 3vh 0 0;
-    margin: -7vh 0vh 1vh;
+    margin: -40vh 0vh 1vh;
     position: fixed;
     z-index: 1000;
     max-height: 50vh;
+    overflow-y: auto;
+    height: 40vh;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
 }

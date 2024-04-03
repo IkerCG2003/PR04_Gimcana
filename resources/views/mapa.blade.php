@@ -5,7 +5,11 @@
     <div id="map"></div>
 
     <div id="infoabajo">
-        <h1>Hola</h1>
+        @foreach ($sitios as $sitio)
+            <p>{{ $sitio->nom_sitio }}</p>
+            <p>{{ $sitio->ubi_sitio }}</p>
+            <p>{{ $sitio->ico_sitio }}</p>
+        @endforeach
     </div>
 
 @endsection
