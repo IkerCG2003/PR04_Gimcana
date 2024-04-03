@@ -31,17 +31,11 @@
                     <span class="toggler-icon middle-bar"></span>
                     <span class="toggler-icon bottom-bar"></span>
                 </button>
-                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> --}}
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">GeoMap</h5>
-                        {{-- <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button> --}}
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        <button class="navbar-toggler cerrar" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
                             aria-label="Toggle navigation">
                             <span class="toggler-icon top-bar"></span>
@@ -62,53 +56,6 @@
                 </div>
             </div>
         </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {{-- <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid">
-                <img class="navbar-brand" src="{{ asset('/src/LOGO_BLANCO.png') }}">
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="toggler-icon top-bar"></span>
-                    <span class="toggler-icon middle-bar"></span>
-                    <span class="toggler-icon bottom-bar"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <p><i class="fa-solid fa-user-lock"></i> Admin</p>
-                            <p><i class="fa-solid fa-users"></i> Gestor de Equipo</p>
-                            <p><i class="fa-solid fa-user-gear"></i> Tecnico</p>
-                            <p><i class="fa-solid fa-house-user"></i> Cliente</p>
-                        </li>
-                        <li class="nav-item">
-
-                            <p><i class="fa-solid fa-building"></i>
-                        </li>
-                        <li class="nav-item">
-
-                        </li>
-                        
-                        <li class="nav-item">
-
-                            <p><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
-                        </li>
-                        </form>
-                </div>
-            </div>
-        </nav> --}}
 
     </header>
 

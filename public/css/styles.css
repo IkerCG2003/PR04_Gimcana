@@ -4,12 +4,10 @@
 }
 
 html {
-    color: white;
     padding: 0;
 }
 
 body {
-    color: white !important;
     padding: 0;
 }
 
@@ -21,7 +19,6 @@ header {
     align-items: center;
     padding: 0 2.5vh;
     background-color: #1a73e8;
-    color: white;
     top: 0;
     z-index: 1;
 }
@@ -45,11 +42,27 @@ header img {
     justify-content: left;
     height: 5vh;
     transition: height 0.3s ease;
-    /* Aplica una transición suave al cambio de altura */
 }
 
 i {
     color: white;
+}
+
+.fixed-top {
+    padding: 0;
+    border-radius: 10vh;
+    margin: 1vh;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+}
+
+.navbar-toggler {
+    border: 0 !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
 }
 
 .offcanvas.hiding,
@@ -57,25 +70,21 @@ i {
 .offcanvas.showing {
     transition: 0.25s !important;
     width: 30vh !important;
+    border-radius: 3vh;
+    margin: 1vh;
+    height: fit-content;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
 }
 
-.navbar {
-    display: flex;
+.navbar-brand {
+    height: 4vh;
 }
 
-.navbar-toggler {
-    border: 0 !important;
+.cerrar {
+    padding: 0 !important;
 }
-
-.navbar-toggler i {
-    font-size: 3vh;
-}
-
-.navbar-toggler:focus {
-    box-shadow: none !important;
-}
-
-
 
 /* HAMBURGUESA/CRUZ NAVBAR */
 
@@ -129,5 +138,21 @@ i {
 /* MAPA */
 
 #map {
-    height: 50vh;
+    height: 100vh;
+}
+
+.leaflet-control-zoom {
+    display: none;
+}
+
+/* INFO ABAJO */
+
+#infoabajo {
+    background-color: white;
+    height: 5vh;
+    width: 100%;
+    margin: -5vh 0 0 0;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
