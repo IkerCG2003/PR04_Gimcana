@@ -78,25 +78,32 @@ body {
     .login-form {
         width: 90%;
     }
+
     .login-form h2 {
         font-size: 24px;
     }
+
     .login-form form input {
         padding: 5px;
     }
+
     .login-form form button {
         padding: 5px;
         width: 100%;
     }
+
     .login-form form button:hover {
         background-color: #0056b3;
     }
+
     .form-group {
         padding-bottom: 5px;
     }
+
     .login-form p {
-        font-size: 10px;
+        font-size: 12px;
     }
+
     .login-form form input::placeholder {
         font-size: 8px;
     }
