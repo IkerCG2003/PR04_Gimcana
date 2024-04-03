@@ -21,6 +21,15 @@
                 <form action="{{ route('login.post') }}" method="POST" class="login-form">
                     <h2 class="mb-4">Inicio de sesión</h2>
                     @csrf
+
+                    @if(session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+                
+                    @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif        
+
                     <div class="form-group">
                         <label for="email">Correo electrónico:</label>
                         <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Ingresa tu correo electrónico">

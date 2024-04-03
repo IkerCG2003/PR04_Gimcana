@@ -24,12 +24,13 @@ class LoginController extends Controller
             'password.min' => 'La contraseña debe tener al menos 9 caracteres',
             'password.max' => 'La contraseña no debe tener más de 20 caracteres',
         ]);
-    
+
         if (Auth::attempt($credentials)) {
             // Autenticación exitosa, establecer variables de sesión
-            $request->session()->put('email', $request->email);
-            $request->session()->put('password', $request->password);
-    
+            $user = Auth::user();
+            $request->session()->put('email', $user->email_usuario);
+            $request->session()->put('rol', $user->rol_usuario); // Guardar el rol en la sesión
+
             // Redirigir al usuario a la página de éxito
             return redirect()->route('exito');
         } else {
