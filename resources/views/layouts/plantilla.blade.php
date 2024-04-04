@@ -26,6 +26,7 @@
         <nav class="navbar bg-body-tertiary fixed-top">
             <div class="container-fluid">
                 <img class="navbar-brand" src="{{ asset('/src/LOGO_NEGRO.png') }}">
+                <h4>GeoMap</h4>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="toggler-icon top-bar"></span>
@@ -47,11 +48,24 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-bookmark"></i> Guardados</a>
+                                <a class="nav-link active" aria-current="page" href="#"><i
+                                        class="fa-solid fa-bookmark"></i> Guardados</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                                <a class="nav-link active" aria-current="page" href=""><i
+                                        class="fa-solid fa-flag"></i> Gimcanas</a>
                             </li>
+                            {{-- @foreach ($gimcanas as $gimcana)
+                                <a href=""><p>{{$gimcana->nombre_gimcana}}</p></a>
+                            @endforeach --}}
+
+                            @foreach ($gimcanas as $gimcana)
+                                <a href="{{ route('menugimcana', $gimcana->id) }}">
+                                    <p>{{ $gimcana->nombre_gimcana }}</p>
+                                </a>
+                            @endforeach
+
+
                         </ul>
                     </div>
                 </div>
@@ -60,9 +74,9 @@
 
         <div class="etiquetas">
             @foreach ($etiquetas as $etiqueta)
-                <div class="etiqueta">
+                <button class="etiqueta">
                     <p>{{ $etiqueta->nom_etiqueta }}</p>
-                </div>
+                </button>
             @endforeach
         </div>
 

@@ -7,10 +7,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
 Route::get('mapa', function () {
-    // session_start();
-    // if (!isset($_SESSION['email'])) {
-    //     return redirect()->route('login')->with('error', 'Debes iniciar sesión para acceder a esta página');
-    // }
     return app()->make(MapaController::class)->mapa();
 })->name('mapa');
+
+Route::get('creargrupo', function () {
+    return app()->make(MapaController::class)->creargrupo();
+})->name('creargrupo');
+
+Route::get('grupoespera', function () {
+    return app()->make(MapaController::class)->grupoespera();
+})->name('grupoespera');
+
+Route::get('{id}', function ($id) {
+    return app()->make(MapaController::class)->menugimcana($id);
+})->name('menugimcana');
