@@ -31,9 +31,10 @@ class MapaController extends Controller
 
         // $gimcana = gimcanas::find($id);
         $grupos = grupos::all();
+        $gimcanas = gimcanas::all();
 
         // $gruposgimcanas = gruposgimcanas::where('id_gincana', $gincana)->get();
-        return view('menugimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'grupos'));
+        return view('menugimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos'));
     }
 
     public function grupoespera()

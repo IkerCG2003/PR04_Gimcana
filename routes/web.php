@@ -37,10 +37,10 @@ Route::get('/exito', function () {return view('vistas.exito'); })->name('exito')
 // PAGINAS
 
 Route::get('mapa', function () {
-    session_start();
-    if (!isset($_SESSION['email'])) {
-        return redirect()->route('login')->with('error', 'Debes iniciar sesión para acceder a esta página');
-    }
+    // session_start();
+    // if (!isset($_SESSION['email'])) {
+    //     return redirect()->route('login')->with('error', 'Debes iniciar sesión para acceder a esta página');
+    // }
     return app()->make(MapaController::class)->mapa();
 })->name('mapa');
 

@@ -25,8 +25,10 @@
         
         <nav class="navbar bg-body-tertiary fixed-top">
             <div class="container-fluid">
-                <a href="{{route('mapa')}}"><img class="navbar-brand" src="{{ asset('/src/LOGO_NEGRO.png') }}"></a>
-                <a href="{{route('mapa')}}"><h4>GeoMap</h4></a>
+                <a href="{{ route('mapa') }}"><img class="navbar-brand" src="{{ asset('/src/LOGO_NEGRO.png') }}"></a>
+                <a href="{{ route('mapa') }}">
+                    <h4>GeoMap</h4>
+                </a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="toggler-icon top-bar"></span>
@@ -48,13 +50,16 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href=""><i class="fa-solid fa-user"></i> Usuario</a>
+                                <a class="nav-link active" aria-current="page" href="#"><i
+                                        class="fa-solid fa-user"></i> {{ session('nombre') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{route('mapa')}}"><i class="fa-solid fa-map"></i> Mapa</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('mapa') }}"><i
+                                        class="fa-solid fa-map"></i> Mapa</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-bookmark"></i> Guardados</a>
+                                <a class="nav-link active" aria-current="page" href="#"><i
+                                        class="fa-solid fa-bookmark"></i> Guardados</a>
                             </li>
                             {{-- <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ route('menugimcana') }}"><i class="fa-solid fa-flag"></i> Gimcanas</a>
@@ -62,6 +67,22 @@
                             @foreach ($gimcanas as $gimcana)
                             <a href=""><p>{{$gimcana->nombre_gimcana}}</p></a>
                         @endforeach --}}
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href=""><i
+                                        class="fa-solid fa-flag"></i> Gimcanas</a>
+                            </li>
+                            @foreach ($gimcanas as $gimcana)
+                                <a href="{{ route('menugimcana', $gimcana->id) }}">
+                                    <p>{{ $gimcana->nombre_gimcana }}</p>
+                                </a>
+                            @endforeach
+                            <form method="post" action="{{ route('logout') }}">
+                                @csrf
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{ route('logout') }}"><i
+                                            class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                                </li>
+                            </form>
                         </ul>
                     </div>
                 </div>
