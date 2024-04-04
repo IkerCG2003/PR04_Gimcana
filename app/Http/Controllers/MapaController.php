@@ -26,12 +26,14 @@ class MapaController extends Controller
         $etiquetas = etiquetas::all();
         $sitios = sitios::all();
         // $gimcanas = gimcanas::all();
-        $gruposgimcanas = gruposgimcanas::all();
+        // $gruposgimcanas = gruposgimcanas::all();
+        $gruposgimcanas = gruposgimcanas::where('id_gimcana', $id)->get();
+
         // $gimcana = gimcanas::find($id);
-        $grupo = grupos::find($id);
+        $grupos = grupos::all();
 
         // $gruposgimcanas = gruposgimcanas::where('id_gincana', $gincana)->get();
-        return view('menugimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'grupo'));
+        return view('menugimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'grupos'));
     }
 
     public function grupoespera()

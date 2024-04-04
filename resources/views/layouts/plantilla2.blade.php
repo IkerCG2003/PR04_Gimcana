@@ -25,8 +25,8 @@
         
         <nav class="navbar bg-body-tertiary fixed-top">
             <div class="container-fluid">
-                <img class="navbar-brand" src="{{ asset('/src/LOGO_NEGRO.png') }}">
-                <h4>GeoMap</h4>
+                <a href="{{route('mapa')}}"><img class="navbar-brand" src="{{ asset('/src/LOGO_NEGRO.png') }}"></a>
+                <a href="{{route('mapa')}}"><h4>GeoMap</h4></a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="toggler-icon top-bar"></span>
