@@ -10,6 +10,9 @@ Route::get('/', function () {return view('welcome');});
 Route::get('/login', function () {return view('vistas.login');})->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 
+/* Ruta de logout */
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 /* Rutas del register */
 Route::get('/register', function () {return view('vistas.register');})->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.post');

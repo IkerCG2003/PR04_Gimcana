@@ -49,4 +49,13 @@ class LoginController extends Controller
             return redirect()->back()->with('error', 'Credenciales incorrectas');
         }
     }
+
+    public function logout(Request $request) 
+    {
+        // Eliminar las variables de sesión
+        $request->session()->flush();
+
+        // Redirigir al usuario a la página de inicio de sesión
+        return redirect()->route('login')->with('success', 'Sesión cerrada correctamente');
+    }
 }
