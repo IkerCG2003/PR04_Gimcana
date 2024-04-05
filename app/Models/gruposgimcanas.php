@@ -15,4 +15,9 @@ class gruposgimcanas extends Model
     {
         return $this->belongsTo('App\Models\grupos', 'id_grupo', 'id');
     }
+
+    public function gimcana()
+    {
+        return $this->belongsTo('App\Models\gimcanas', 'id_gimcana', 'id');
+    }
 }

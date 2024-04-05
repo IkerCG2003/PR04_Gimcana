@@ -55,6 +55,10 @@ Route::get('todasgimcanas', function () {
     return app()->make(MapaController::class)->todasgimcanas();
 })->name('todasgimcanas');
 
+Route::get('favoritos', function () {
+    return app()->make(MapaController::class)->favoritos();
+})->name('favoritos');
+
 Route::get('grupoespera', function () {
     return app()->make(MapaController::class)->grupoespera();
 })->name('grupoespera');

@@ -53,36 +53,39 @@
                         </div>
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#"><i
-                                            class="fa-solid fa-user"></i> {{ session('nombre') }}</a>
-                                </li>
+                                @if (session('rol') === 0)
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href=""><i
+                                                class="fa-solid fa-lock"></i> Admin</a>
+                                    </li>
+                                @endif
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{{ route('mapa') }}"><i
                                             class="fa-solid fa-map"></i> Mapa</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="#"><i
-                                            class="fa-solid fa-bookmark"></i> Guardados</a>
+                                            class="fa-solid fa-user"></i> {{ session('nombre') }}</a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('menugimcana') }}"><i class="fa-solid fa-flag"></i> Gimcanas</a>
-                            </li>
-                            @foreach ($gimcanas as $gimcana)
-                            <a href=""><p>{{$gimcana->nombre_gimcana}}</p></a>
-                        @endforeach --}}
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href=""><i class="fa-solid fa-location-dot"></i> Gimcanas</a>
+                                    <a class="nav-link active" aria-current="page" href="{{ route('favoritos') }}"><i
+                                            class="fa-solid fa-star"></i> Favoritos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page"
+                                        href="{{ route('todasgimcanas') }}"><i class="fa-solid fa-location-dot"></i>
+                                        Gimcanas</a>
                                 </li>
                                 @foreach ($gimcanas as $gimcana)
                                     <a href="{{ route('menugimcana', $gimcana->id) }}">
                                         <p>{{ $gimcana->nombre_gimcana }}</p>
                                     </a>
                                 @endforeach
-                                @csrf
                                 <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
                                     <li class="nav-item">
-                                        <i class="fa-solid fa-right-from-bracket"></i> <button type="submit">Logout</button>
+                                        <i class="fa-solid fa-right-from-bracket"></i> <button
+                                            type="submit">Logout</button>
                                     </li>
                                 </form>
                             </ul>
