@@ -18,7 +18,11 @@
     <title>Login | Jincana</title>
 </head>
 
-<body>        
+<body>       
+    <div class="imglogin">
+        <img src="{{ 'img/LOGO_NEGRO.png' }}" alt="">
+    </div>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -46,7 +50,7 @@
                         <label for="password">Contraseña:</label>
                         <div class="input-group">
                             <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Ingresa tu contraseña">
-                            <button type="button" id="password-toggle-btn" class="btn btn-outline-secondary" onclick="togglePasswordVisibility()">
+                            <button type="button" id="password-toggle-btn" class="btn btn-outline-secondary btn-icon" onclick="togglePasswordVisibility()">
                                 <i class="far fa-eye"></i> <!-- Ícono del ojo abierto -->
                             </button>
                         </div>
@@ -55,7 +59,7 @@
                         @enderror
                     </div>
                     
-                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    <button type="submit" class="btn btn-primary" id="btn-form">Iniciar sesión</button>
                                         
                     <a href="{{ route('register') }}"><p>¿No tienes cuenta? Registrate aquí.</p></a>
                 </form> 

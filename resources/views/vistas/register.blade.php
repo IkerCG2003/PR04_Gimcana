@@ -19,6 +19,10 @@
 </head>
 
 <body>
+    <div class="imglogin">
+        <img src="{{ 'img/LOGO_NEGRO.png' }}" alt="">
+    </div>
+    
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -66,8 +70,8 @@
                             <input type="password" name="password-1" id="password-1"
                                 class="form-control @error('password-1') is-invalid @enderror"
                                 placeholder="Ingresa tu contraseña">
-                            <button type="button" class="btn btn-outline-secondary"
-                                onclick="togglePasswordVisibility('password-1')">
+                            <button type="button" class="btn btn-outline-secondary btn-icon"
+                                onclick="togglePasswordVisibility('password-1')"> 
                                 <i class="far fa-eye"></i>
                             </button>
                         </div>
@@ -82,7 +86,7 @@
                             <input type="password" name="password-2" id="password-2"
                                 class="form-control @error('password-2') is-invalid @enderror"
                                 placeholder="Repite tu contraseña">
-                            <button type="button" class="btn btn-outline-secondary"
+                            <button type="button" class="btn btn-outline-secondary btn-icon"
                                 onclick="togglePasswordVisibility('password-2')">
                                 <i class="far fa-eye"></i>
                             </button>
@@ -92,7 +96,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button type="submit" class="btn btn-primary" id="btn-form">Registrar</button>
 
                     <a href="{{ route('login') }}">
                         <p>¿Ya tienes cuenta? Inicia sesión aquí.</p>
