@@ -5,7 +5,7 @@
     <div class="formcreargrupo">
         <h2>Nuevo Grupo</h2>
         {{-- <form class="nuevogrupo" id="nuevogrupo" action="{{ route('nuevogrupo') }}" method="POST"> --}}
-        <form  class="nuevogrupo">
+        <form class="nuevogrupo"  id="nuevoGrupo" action="{{ route('nuevoGrupo') }}" method="POST">
             @csrf
             <label for="nombre_grupo">Nombre grupo:</label>
             <input type="text" id="nombre_grupo" name="nombre_grupo" value="{{ old('nombre_grupo') }}" required>

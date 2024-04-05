@@ -20,6 +20,7 @@ header {
     padding: 0 2.5vh;
     top: 0;
     z-index: 1;
+    font-weight: 600;
 }
 
 header div {
@@ -30,6 +31,7 @@ header p {
     font-size: 1.6vh;
     transition: 0.3s;
     margin: 0;
+    font-weight: 500;
 }
 
 header h4 {
@@ -39,6 +41,13 @@ header h4 {
 header a {
     text-decoration: none;
     color: black;
+}
+
+header button {
+    font-weight: 600;
+    border: 0;
+    background-color: transparent;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
 }
 
 header img {
@@ -75,7 +84,7 @@ i {
     width: 30vh !important;
     max-height: 45vh;
     border-radius: 3vh;
-    margin: 1vh;
+    margin: 1vh !important;
     height: fit-content;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
@@ -191,25 +200,96 @@ i {
 }
 
 /* INFO ABAJO */
+
 #infoabajo {
     background-color: white;
     width: 100%;
-    padding: 2vh;
+    padding: 2vh 0;
     border-radius: 3vh 3vh 0 0;
-    margin: -30vh 0vh 1vh;
+    margin: -40vh 0vh 1vh;
     position: fixed;
     z-index: 1000;
     max-height: 50vh;
     overflow-y: auto;
-    height: 30vh;
+    height: 40vh;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    overflow-x: hidden;
+}
+
+.separacionSitios {
+    width: 100%;
+    border: solid 0.4vh #dadce0;
+    margin: 3vh -2vh;
+}
+
+.infoSitio {
+    width: 100%;
+    margin: 0 2vh;
+}
+
+.infoSitio button {
+    width: 40%;
+    border-radius: 3vh;
+    background-color: #dadce0;
+    border: 0;
+    margin-right: 1.5vh;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
-.infoSitio {
-
+.botonesSitios {
+    width: 50vh;
+    margin: auto;
 }
+
+.etiquetasSitios {
+    display: flex;
+}
+
+.etiquetasSitios p {
+    border-radius: 3vh;
+    padding: 0 1vh;
+    margin-right: 1.5vh;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+
+
+/* TODAS LAS GIMCANAS */
+
+.todasgimcanas {
+    width: 90vw;
+    height: 100%;
+    margin: 11vh 1vh 1vh 1vh;
+}
+
+.todasgimcanas h2 {
+    width: 100%;
+    margin: 3vh 1vh;
+    text-align: center;
+}
+
+.gimcanas {
+    justify-content: space-between;
+    width: 100%;
+    height: fit-content;
+    margin: 3vh 1vh;
+    padding: 1vh 2vh;
+    border-radius: 3vh;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+.gimcanas p {
+    margin: 0;
+}
+
 
 
 

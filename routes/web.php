@@ -15,18 +15,23 @@ Route::get('/', function () {
 
 // SESIONES
 
-Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
-
-
 /* Rutas del login */
-Route::get('/login', function () {return view('vistas.login');})->name('login');
+Route::get('/login', function () {
+    return view('vistas.login');
+})->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 
-/* Rutas del register */
-Route::get('/register', function () {return view('vistas.register');})->name('register');
+/* Rutas del registro */
+Route::get('/register', function () {
+    return view('vistas.register');
+})->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.post');
 
-Route::get('/exito', function () {return view('vistas.exito'); })->name('exito');
+/* Ruta de logout */
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+/* Ruta de Ã©xito */
+Route::get('/mapa', [LoginController::class, 'mapa'])->name('mapa');
 
 
 
@@ -37,16 +42,18 @@ Route::get('/exito', function () {return view('vistas.exito'); })->name('exito')
 // PAGINAS
 
 Route::get('mapa', function () {
-    // session_start();
-    // if (!isset($_SESSION['email'])) {
-    //     return redirect()->route('login')->with('error', 'Debes iniciar sesión para acceder a esta página');
-    // }
     return app()->make(MapaController::class)->mapa();
 })->name('mapa');
 
 Route::get('creargrupo', function () {
     return app()->make(MapaController::class)->creargrupo();
 })->name('creargrupo');
+
+Route::post('creargrupo', [MapaController::class, 'nuevoGrupo'])->name('nuevoGrupo');
+
+Route::get('todasgimcanas', function () {
+    return app()->make(MapaController::class)->todasgimcanas();
+})->name('todasgimcanas');
 
 Route::get('grupoespera', function () {
     return app()->make(MapaController::class)->grupoespera();

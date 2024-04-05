@@ -1,4 +1,4 @@
-var map = L.map('map').setView([41.36017809744229, 2.109403736829626], 13);
+var map = L.map('map').setView([41.350149243316864, 2.1072624638353137], 13);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -18,8 +18,6 @@ var icono = L.Icon.extend({
     }
 });
 var icono = new icono({iconUrl: './src/location-dot-solid.svg'});
-
-
 
 
 // MARCADOR 1
@@ -55,7 +53,7 @@ marker3.on('click', function () {
     });
 });
 
-// MARCADOR 3
+// MARCADOR 4
 var marker4 = L.marker([41.350149243316864, 2.1072624638353137], {icon: icono}).addTo(map);
 marker4.on('click', function () {
     var infoSitio = document.querySelector('.infoSitio');
@@ -66,3 +64,37 @@ marker4.on('click', function () {
     });
 });
 
+
+
+
+
+// // Supongamos que tienes una función para obtener las coordenadas desde tu base de datos
+// function obtenerCoordenadasDesdeBaseDeDatos() {
+//     // Realiza una solicitud AJAX para obtener las coordenadas desde tu backend
+//     // Aquí asumimos que la respuesta es un arreglo de objetos con propiedades latitud, longitud y nombre
+//     fetch('/obtener-coordenadas')
+//         .then(response => response.json())
+//         .then(coordenadas => {
+//             // Llama a la función para crear marcadores con las coordenadas obtenidas
+//             crearMarcadores(coordenadas);
+//         })
+//         .catch(error => console.error('Error al obtener coordenadas:', error));
+// }
+
+// // Función para crear marcadores a partir de coordenadas
+// function crearMarcadores(coordenadas) {
+//     coordenadas.forEach(coordenada => {
+//         var marker = L.marker([coordenada.latitud, coordenada.longitud]).addTo(map);
+//         marker.on('click', function () {
+//             var infoSitio = document.querySelector('.infoSitio');
+//             infoSitio.innerHTML = `<h4>${coordenada.nombre}</h4><button>Como llegar <i class='fa-solid fa-diamond-turn-right'></i></button>`;
+//             var btnEliminar = document.getElementById('eliminarInfo');
+//             btnEliminar.addEventListener('click', function () {
+//                 infoSitio.innerHTML = '';
+//             });
+//         });
+//     });
+// }
+
+// // Llama a la función para obtener las coordenadas desde la base de datos
+// obtenerCoordenadasDesdeBaseDeDatos();
