@@ -76,11 +76,11 @@
                                         href="{{ route('todasgimcanas') }}"><i class="fa-solid fa-location-dot"></i>
                                         Gimcanas</a>
                                 </li>
-                                @foreach ($gimcanas as $gimcana)
+                                {{-- @foreach ($gimcanas as $gimcana)
                                     <a href="{{ route('menugimcana', $gimcana->id) }}">
                                         <p>{{ $gimcana->nombre_gimcana }}</p>
                                     </a>
-                                @endforeach
+                                @endforeach --}}
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <li class="nav-item">

@@ -4,6 +4,8 @@
 
     @foreach ($gruposgimcanas as $grupogimcana)
     @endforeach
+    @foreach ($gimcanas as $gimcana)
+    @endforeach
 
     <div class="todasgimcanas">
         {{-- @foreach ($gruposgimcanas as $grupogimcana)
@@ -13,8 +15,9 @@
                 <h5><i class="fa-solid fa-people-group fa-sm"></i> 1/{{ $grupogimcana->grupo->capacidad_grupo }}</h5>
             </div>
         @endforeach --}}
-        <h2>Gimcanas</h2>
+        <h2><i class="fa-solid fa-location-dot"></i> Gimcanas</h2>
         @foreach ($gimcanas as $gimcana)
+            <a href="{{ route('menugimcana', $gimcana->id) }}">
                 <div class="gimcanas">
                     <div class="izqGimcanas">
                         <h4>{{ $gimcana->nombre_gimcana }}</h4>
@@ -36,6 +39,7 @@
                         </div>
                     </div>
                 </div>
+            </a>
         @endforeach
     </div>
 

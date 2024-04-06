@@ -10,6 +10,7 @@ use App\Models\gimcanas;
 use App\Models\grupos;
 use App\Models\etiquetassitios;
 use App\Models\favoritos;
+use App\Models\usuariosgrupos;
 
 
 class MapaController extends Controller
@@ -57,9 +58,9 @@ class MapaController extends Controller
         // $gimcana = gimcanas::find($id);
         $grupos = grupos::all();
         $gimcanas = gimcanas::all();
-
+        $usuariosgrupos = usuariosgrupos::all();
         // $gruposgimcanas = gruposgimcanas::where('id_gincana', $gincana)->get();
-        return view('menugimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos'));
+        return view('menugimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'usuariosgrupos'));
     }
 
     public function grupoespera()

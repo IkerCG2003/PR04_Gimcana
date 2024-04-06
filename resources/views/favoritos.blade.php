@@ -17,7 +17,7 @@
                 <h5><i class="fa-solid fa-people-group fa-sm"></i> 1/{{ $grupogimcana->grupo->capacidad_grupo }}</h5>
             </div>
         @endforeach --}}
-        <h2>Favoritos</h2>
+        <h2><i class="fa-solid fa-star"></i> Favoritos</h2>
 
         @if ($favorito->usuario->id === session('id'))
             @foreach ($favoritos as $favorito)
