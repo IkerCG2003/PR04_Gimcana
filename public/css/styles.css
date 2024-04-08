@@ -64,9 +64,7 @@ i {
     padding: 0;
     border-radius: 10vh;
     margin: 1vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4); */
 }
 
 .navbar-toggler {
@@ -90,9 +88,7 @@ i {
     border-radius: 3vh;
     margin: 1vh !important;
     height: fit-content;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4); */
 }
 
 .navbar-brand {
@@ -187,9 +183,6 @@ i {
     background-color: white;
     width: max-content;
     margin: 0 0.25vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
 .etiquetaFav {
@@ -199,9 +192,15 @@ i {
     width: max-content;
     margin: 0 0.25vh;
     border: black solid 2px;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+.añadirEtqueta {
+    display: inline-block;
+    border-radius: 3vh;
+    background-color: white;
+    width: max-content;
+    margin: 0 0.25vh;
+    border: black solid 2px;
 }
 
 
@@ -227,9 +226,7 @@ i {
     max-height: 50vh;
     overflow-y: auto;
     height: 40vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4); */
     overflow-x: hidden;
 }
 
@@ -252,12 +249,10 @@ i {
 .infoSitio button {
     width: 40%;
     border-radius: 3vh;
-    background-color: #dadce0;
+    background-color: #f1f4f8;
     border: 0;
     margin-right: 1.5vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4); */
 }
 
 .botonesSitios {
@@ -271,6 +266,7 @@ i {
 }
 
 .etiquetasSitios p {
+    background-color: #f1f4f8;
     border-radius: 3vh;
     margin: 0.5vh;
     padding: 0.5vh 1.5vh;
@@ -278,9 +274,7 @@ i {
     font-weight: 500;
     font-size: 1.6vh;
     transition: 0.3s;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4); */
 }
 
 .etiquetasSitios::-webkit-scrollbar {
@@ -293,7 +287,7 @@ i {
 .todasgimcanas {
     width: 90vw;
     height: 100%;
-    margin: 11vh auto;
+    margin: 8vh auto;
 }
 
 .todasgimcanas a {
@@ -310,6 +304,7 @@ i {
 }
 
 .gimcanas {
+    background-color: #f1f4f8;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -317,9 +312,7 @@ i {
     margin: 3vh 0;
     padding: 2vh;
     border-radius: 3vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4); */
 }
 
 .gimcanas p,
@@ -327,10 +320,15 @@ i {
     margin: 0;
 }
 
+.izqGimcanas {
+    width: 80%;
+}
+
+
 .derGimcanas {
     margin: auto 0;
     text-align: right;
-    width: 30%;
+    width: 20%;
 }
 
 
@@ -339,30 +337,29 @@ i {
 .menugimcana {
     width: 90vw;
     height: 100%;
-    margin: 11vh auto;
+    margin: 9vh auto;
 }
 
 .menugimcana h2 {
     width: 100%;
-    margin: 3vh 1vh;
+    margin: 3vh 0;
     text-align: center;
 }
 
 .grupogimcana {
+    border: 0;
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: fit-content;
     margin: 3vh 0;
+    background-color: #f1f4f8;
     padding: 1vh 2vh;
     border-radius: 3vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
 .grupogimcanaLleno {
-    background-color: #dadce0;
+    background-color: #c7c7c7;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -370,10 +367,7 @@ i {
     margin: 3vh 0;
     padding: 1vh 2vh;
     border-radius: 3vh;
-    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    }
+}
 
 .botonEntrarGrupo {
     text-decoration: none;
@@ -416,9 +410,7 @@ i {
     border-radius: 3vh;
     text-align: center;
     font-size: 3.5vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    background-color: #f1f4f8;
 }
 
 
@@ -509,9 +501,7 @@ i {
     border-radius: 3vh;
     border: 0;
     padding: 0.5vh 2vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    background-color: #f1f4f8;
 }
 
 .nuevogrupo button {
@@ -520,7 +510,6 @@ i {
     border-radius: 3vh;
     border: 0;
     padding: 1vh 2vh;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    background-color: #dadce0;
+    font-weight: 600;
 }

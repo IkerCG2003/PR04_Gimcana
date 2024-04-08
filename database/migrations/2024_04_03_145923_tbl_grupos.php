@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::create('tbl_grupos', function (Blueprint $table) {
             $table->id();
-            $table->integer('numero_grupo')->nullable();
             $table->string('nombre_grupo', 30);
             $table->integer('capacidad_grupo')->nullable();
             $table->unsignedBigInteger('id_usuario');

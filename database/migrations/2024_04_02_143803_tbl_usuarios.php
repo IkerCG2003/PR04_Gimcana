@@ -14,9 +14,9 @@ return new class extends Migration
             $table->string('apell_usuario', 60);
             $table->string('email_usuario')->unique();
             $table->string('pwd_usuario',60);
-            // 0 ADMIN - 1 USUARIO
-            $table->boolean('rol_usuario')->default(0);
-            $table->timestamps();
+            // 1 USUARIO - 2 ADMIN
+            $table->boolean('rol_usuario')->default(1);
+            $table->timestamps();   
         });
     }
 

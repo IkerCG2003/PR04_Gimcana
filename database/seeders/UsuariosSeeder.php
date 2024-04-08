@@ -15,7 +15,7 @@ class UsuariosSeeder extends Seeder
             'apell_usuario' => 'Vazquez Pascuas',
             'email_usuario' => 'adrianvazquez@gmail.com',
             'pwd_usuario' => bcrypt('qweQWE123'),
-            'rol_usuario' => 0, /* ROL DE ADMIN */
+            'rol_usuario' => 2, /* ROL DE ADMIN */
             'created_at' => now(),
             'updated_at' => now()
         ]);

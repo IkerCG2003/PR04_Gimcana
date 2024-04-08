@@ -29,10 +29,10 @@
     <body>
 
         <header>
-            <nav class="navbar bg-body-tertiary fixed-top">
+            <nav class="navbar bg-white text-dark fixed-top">
                 <div class="container-fluid">
                     <img class="navbar-brand" src="{{ asset('/src/LOGO_NEGRO.png') }}">
-                    <h4>GeoMap</h4>
+                    {{-- <h4>GeoMap</h4> --}}
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
                         aria-label="Toggle navigation">
@@ -43,7 +43,8 @@
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                         aria-labelledby="offcanvasNavbarLabel">
                         <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">GeoMap</h5>
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="navbar-brand"
+                                src="{{ asset('/src/LOGO_NEGRO.png') }}"></h5>
                             <button class="navbar-toggler cerrar" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
                                 aria-label="Toggle navigation">
@@ -92,6 +93,12 @@
             </nav>
 
             <div class="etiquetas">
+
+                @if (session('rol') === 0)
+                <button class="añadirEtqueta">
+                    <p><i class="fa-solid fa-plus"></i> Etiqueta</p>
+                </button>
+                @endif
 
                 @foreach ($favoritos as $favorito)
                     @if ($favorito->usuario->id === session('id'))

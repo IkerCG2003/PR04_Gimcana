@@ -11,7 +11,6 @@ class GruposSeeder extends Seeder
     public function run(): void
     {
         DB::table('tbl_grupos')->insert([
-            'numero_grupo' => '1',
             'nombre_grupo' => 'Grupo1',
             'capacidad_grupo' => '4',
             'id_usuario' => 2,
@@ -19,7 +18,6 @@ class GruposSeeder extends Seeder
             'updated_at' => now()
         ]);
         DB::table('tbl_grupos')->insert([
-            'numero_grupo' => '2',
             'nombre_grupo' => 'Grupo2',
             'capacidad_grupo' => '3',
             'id_usuario' => 3,

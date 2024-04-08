@@ -45,12 +45,6 @@ Route::get('mapa', function () {
     return app()->make(MapaController::class)->mapa();
 })->name('mapa');
 
-Route::get('creargrupo', function () {
-    return app()->make(MapaController::class)->creargrupo();
-})->name('creargrupo');
-
-Route::post('creargrupo', [MapaController::class, 'nuevoGrupo'])->name('nuevoGrupo');
-
 Route::get('todasgimcanas', function () {
     return app()->make(MapaController::class)->todasgimcanas();
 })->name('todasgimcanas');
@@ -66,3 +60,11 @@ Route::get('grupoespera', function () {
 Route::get('{id}', function ($id) {
     return app()->make(MapaController::class)->menugimcana($id);
 })->name('menugimcana');
+
+Route::get('creargrupo/{idGimcana}', function ($id) {
+    return app()->make(MapaController::class)->creargrupo($id);
+})->name('creargrupo');
+
+Route::post('creargrupo', [MapaController::class, 'nuevoGrupo'])->name('nuevoGrupo');
+
+// Route::post('/menugimcana/{id_grupo}', 'MapaController@unirseAGrupo')->name('menugimcana');

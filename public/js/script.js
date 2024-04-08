@@ -31,6 +31,41 @@ marker1.on('click', function () {
     });
 });
 
+// // MARCADOR 1
+// var marker1 = L.marker([41.360327855916495, 2.098548486530989], { icon: icono }).addTo(map);
+// marker1.on('click', function () {
+//     var infoSitio = document.querySelector('.infoSitio');
+//     var contenidoHTML = "";
+//     contenidoHTML += `
+//     @foreach ($sitios as $sitio)
+    
+//             <div class="sitioMapaInfo">
+//                 <h4>{{ $sitio->nom_sitio }}</h4>
+//                 <p>{{ $sitio->ubi_sitio }}</p>
+        
+//                 @if ($sitio->id === $etiquetasitio->sitioRel->id)
+//                     <div class="etiquetasSitios">
+//                         @foreach ($etiquetassitios as $etiquetasitio)
+//                             <p>{{ $etiquetasitio->etiquetaRel->nom_etiqueta }}</p>
+//                         @endforeach
+//                     </div>
+//                 @endif
+        
+//                 <div class="botonesSitios">
+//                     <button><i class="fa-solid fa-diamond-turn-right"></i> Como llegar</button>
+//                     <button><i class="fa-solid fa-circle-info"></i> Mas info</button>
+//                 </div>
+//             </div>
+//     @endforeach
+//     `;
+//     infoSitio.innerHTML = contenidoHTML;
+
+//     var btnEliminar = document.getElementById('eliminarInfo');
+//     btnEliminar.addEventListener('click', function () {
+//         infoSitio.innerHTML = '';
+//     });
+// });
+
 // MARCADOR 2
 var marker2 = L.marker([41.36017809744229, 2.109403736829626], {icon: icono}).addTo(map);
 marker2.on('click', function () {
