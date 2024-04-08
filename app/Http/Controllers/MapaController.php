@@ -9,7 +9,6 @@ use App\Models\gruposgimcanas;
 use App\Models\gimcanas;
 use App\Models\grupos;
 use App\Models\etiquetassitios;
-use App\Models\favoritos;
 
 
 class MapaController extends Controller
@@ -21,8 +20,12 @@ class MapaController extends Controller
         $gruposgimcanas = gruposgimcanas::all();
         $gimcanas = gimcanas::all();
         $etiquetassitios = etiquetassitios::all();
-        $favoritos = favoritos::all();
-        return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios', 'favoritos'));
+        return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios'));
+        // if (!isset($_SESSION['email'])) {
+        //     return view('login');
+        // } else {
+        //     return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios'));
+        // }
     }
 
     public function todasgimcanas()
@@ -33,17 +36,6 @@ class MapaController extends Controller
         $grupos = grupos::all();
         $gruposgimcanas = gruposgimcanas::all();
         return view('todasgimcanas', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos'));
-    }
-
-    public function favoritos()
-    {
-        $etiquetas = etiquetas::all();
-        $sitios = sitios::all();
-        $gruposgimcanas = gruposgimcanas::all();
-        $gimcanas = gimcanas::all();
-        $etiquetassitios = etiquetassitios::all();
-        $favoritos = favoritos::all();
-        return view('favoritos', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios', 'favoritos'));
     }
 
     public function menugimcana($id)

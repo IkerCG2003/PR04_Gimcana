@@ -29,20 +29,25 @@
             $user = Usuarios::where('email_usuario', $credentials['email'])->first();
         
             // Verificamos si el usuario existe y si la contraseña es correcta
-            if ($user && password_verify($credentials['password'], $user->pwd_usuario)) 
-            {
+            if ($user && password_verify($credentials['password'], $user->pwd_usuario)) {
+
+                $rolUsuario = $user->rol_usuario;
+
                 // Autenticación exitosa, establecer variables de sesión
                 $request->session()->put('id', $user->id);
                 $request->session()->put('nombre', $user->nom_usuario);
                 $request->session()->put('apellido', $user->apell_usuario);
                 $request->session()->put('email', $user->email_usuario);
-                $request->session()->put('rol', $user->rol_usuario);
-        
-                // Redirigir al usuario a la página de éxito
-                return redirect()->route('mapa');
-            } 
-            
-            else
+                $request->session()->put('rol', $rolUsuario);
+
+                // // Si el rol es 1 (administrador) te lleva a 'admin', sino, a la página de mapas
+                // if ($rolUsuario === 1) {
+                //     return redirect()->route('admin.admin');
+                // } else {
+                //     return redirect()->route('mapa');
+                // }
+
+            } else
             {
                 // Autenticación fallida, redirigir de vuelta con un mensaje de error
                 return redirect()->back()->with('error', 'Credenciales incorrectas');
@@ -52,8 +57,7 @@
         public function mapa(Request $request)
         {
             // Verificar si el usuario ha iniciado sesión
-            if($request->session()->has('nombre') && $request->session()->has('apellido') && $request->session()->has('email') && $request->session()->has('rol')) 
-            {
+            if($request->session()->has('nombre') && $request->session()->has('apellido') && $request->session()->has('email') && $request->session()->has('rol')) {
                 // El usuario ha iniciado sesión, mostrar la página de éxito
                 return view('mapa');
             } 

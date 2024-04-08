@@ -1,9 +1,4 @@
-@if (session('id') && session('nombre') && session('apellido') && session('email') && session('rol'))
-
-    @foreach ($favoritos as $favorito)
-    @endforeach
-    @foreach ($sitios as $sitio)
-    @endforeach
+@if (session('nombre') && session('apellido') && session('email') && session('rol'))
 
     <!DOCTYPE html>
     <html lang="en">
@@ -54,24 +49,17 @@
                         </div>
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                @if (session('rol') === 0)
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href=""><i
-                                                class="fa-solid fa-lock"></i> Admin</a>
-                                    </li>
-                                @endif
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href=""><i
+                                    <a class="nav-link active" aria-current="page" href="#"><i
                                             class="fa-solid fa-user"></i> {{ session('nombre') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('favoritos') }}"><i
-                                            class="fa-solid fa-star"></i> Favoritos</a>
+                                    <a class="nav-link active" aria-current="page" href="#"><i
+                                            class="fa-solid fa-bookmark"></i> Guardados</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page"
-                                        href="{{ route('todasgimcanas') }}"><i class="fa-solid fa-location-dot"></i>
-                                        Gimcanas</a>
+                                    <a class="nav-link active" aria-current="page" href="{{ route('todasgimcanas')}}"><i
+                                            class="fa-solid fa-location-dot"></i> Gimcanas</a>
                                 </li>
                                 @foreach ($gimcanas as $gimcana)
                                     <a href="{{ route('menugimcana', $gimcana->id) }}">
@@ -92,21 +80,11 @@
             </nav>
 
             <div class="etiquetas">
-
-                @foreach ($favoritos as $favorito)
-                    @if ($favorito->usuario->id === session('id'))
-                        <button class="etiquetaFav">
-                            <p>{{ $favorito->sitioRel->nom_sitio }}</p>
-                        </button>
-                    @endif
-                @endforeach
-
                 @foreach ($etiquetas as $etiqueta)
                     <button class="etiqueta">
                         <p>{{ $etiqueta->nom_etiqueta }}</p>
                     </button>
                 @endforeach
-
             </div>
 
         </header>

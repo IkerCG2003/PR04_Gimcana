@@ -2,9 +2,6 @@
 @section('title', 'Gimcanas')
 @section('content')
 
-    @foreach ($gruposgimcanas as $grupogimcana)
-    @endforeach
-
     <div class="todasgimcanas">
         {{-- @foreach ($gruposgimcanas as $grupogimcana)
             <div class="grupogimcana">
@@ -15,28 +12,17 @@
         @endforeach --}}
         <h2>Gimcanas</h2>
         @foreach ($gimcanas as $gimcana)
+            <a class="botonEntrarGrupo" href="">
                 <div class="gimcanas">
-                    <div class="izqGimcanas">
-                        <h4>{{ $gimcana->nombre_gimcana }}</h4>
-                        <p>{{ $gimcana->descripcion_gimcana }}</p>
-                    </div>
-                    <div class="derGimcanas">
-                        @php
-                            $contador = 0;
-                        @endphp
-                        @foreach ($gruposgimcanas as $grupogimcana)
-                            @if ($grupogimcana->gimcana->id === $gimcana->id)
-                                @php
-                                    $contador++;
-                                @endphp
-                            @endif
-                        @endforeach
-                        <div class="contadorGrupos">
-                            <h6><i class="fa-solid fa-people-group"></i> {{ $contador }}</h6>
-                        </div>
-                    </div>
+                    <h4>{{ $gimcana->nombre_gimcana }}</h4>
+                    <p>{{ $gimcana->descripcion_gimcana }}</p>
                 </div>
+            </a>
         @endforeach
+        {{-- <a href="{{ route('creargrupo') }}">
+            <div class="creargupogimcana"><i class="fa-solid fa-plus"></i></div>
+        </a> --}}
+
     </div>
 
 @endsection
