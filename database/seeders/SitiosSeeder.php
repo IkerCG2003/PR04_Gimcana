@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -11,29 +10,33 @@ class SitiosSeeder extends Seeder
     public function run(): void
     {
         DB::table('tbl_sitios')->insert([
-            'nom_sitio' => 'Sitio1',
-            'ubi_sitio' => '41.379028624403865, 2.126041492842137',
+            'nom_sitio' => 'Polideportivo Municipal Bellvitge Sergio Manzano',
+            'latitud' => 41.34870407, 
+            'longitud' => 2.10316086, 
             'ico_sitio' => 'sitio1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('tbl_sitios')->insert([
-            'nom_sitio' => 'Sitio2',
-            'ubi_sitio' => '41.379028624403865, 2.126041492842137',
+            'nom_sitio' => 'Metropolitan Gran Vía',
+            'latitud' => 41.34698045, 
+            'longitud' => 2.11069250, 
             'ico_sitio' => 'sitio2',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('tbl_sitios')->insert([
-            'nom_sitio' => 'Sitio3',
-            'ubi_sitio' => '41.379028624403865, 2.126041492842137',
+            'nom_sitio' => 'Hospital Universitario de Bellvitge',
+            'latitud' => 41.34506472, 
+            'longitud' => 2.10586769, 
             'ico_sitio' => 'sitio3',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('tbl_sitios')->insert([
-            'nom_sitio' => 'Sitio4',
-            'ubi_sitio' => '41.379028624403865, 2.126041492842137',
+            'nom_sitio' => 'Parque de Bellvitge',
+            'latitud' => 41.34869964, 
+            'longitud' => 2.11187429, 
             'ico_sitio' => 'sitio4',
             'created_at' => now(),
             'updated_at' => now()

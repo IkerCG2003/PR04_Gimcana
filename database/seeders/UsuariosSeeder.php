@@ -11,9 +11,9 @@ class UsuariosSeeder extends Seeder
     public function run(): void
     {
         DB::table('tbl_usuarios')->insert([
-            'nom_usuario' => 'Adrian',
-            'apell_usuario' => 'Vazquez Pascuas',
-            'email_usuario' => 'adrianvazquez@gmail.com',
+            'nom_usuario' => 'admin',
+            'apell_usuario' => 'admin',
+            'email_usuario' => 'admin@gmail.com',
             'pwd_usuario' => bcrypt('qweQWE123'),
             'rol_usuario' => 0, /* ROL DE ADMIN */
             'created_at' => now(),

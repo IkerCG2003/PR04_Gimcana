@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('tbl_gimcanas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_gimcana', 30);
+            $table->string('descripcion_gimcana', 200);
             $table->timestamps();
         });
     }

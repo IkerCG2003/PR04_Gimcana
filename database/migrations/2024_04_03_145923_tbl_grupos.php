@@ -10,9 +10,9 @@ return new class extends Migration
     {
         Schema::create('tbl_grupos', function (Blueprint $table) {
             $table->id();
-            $table->decimal('numero_grupo')->nullable();
+            $table->integer('numero_grupo')->nullable();
             $table->string('nombre_grupo', 30);
-            $table->decimal('capacidad_grupo')->nullable();
+            $table->integer('capacidad_grupo')->nullable();
             $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('tbl_usuarios');
             $table->timestamps();
