@@ -6,6 +6,8 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController; 
 use App\Http\Controllers\MapaController;
 use App\Http\Controllers\CoordenadasController;
+use App\Http\Controllers\FavoritosController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,3 +40,6 @@ Route::post('creargrupo', [MapaController::class, 'nuevoGrupo'])->name('nuevoGru
 Route::get('todasgimcanas', [MapaController::class, 'todasgimcanas'])->name('todasgimcanas');
 Route::get('grupoespera', [MapaController::class, 'grupoespera'])->name('grupoespera');
 Route::get('{id}', [MapaController::class, 'menugimcana'])->name('menugimcana');
+
+/* Añadir a favoritos */
+Route::post('/anadirFav', [FavoritosController::class, 'añadirFav'])->name('añadirFav');

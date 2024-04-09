@@ -19,6 +19,7 @@
         <script src="https://kit.fontawesome.com/8e6d3dccce.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
     <body>
@@ -90,6 +91,8 @@
 
         </header>
 
+        <div class="infoUsuario" data-id-usuario="{{ session('id') }}"></div>
+
         @yield('content')
 
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -109,4 +112,10 @@
     <script>
         window.location = "{{ route('login') }}";
     </script>
+
+@csrf
+<script>
+    var csrfToken = "{{ csrf_token() }}";
+</script>
+
 @endif

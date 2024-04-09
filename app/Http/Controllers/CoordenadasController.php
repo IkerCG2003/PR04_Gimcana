@@ -9,7 +9,7 @@ class CoordenadasController extends Controller
 {
     public function obtenerCoordenadas()
     {
-        $coordenadas = Sitios::select('latitud', 'longitud', 'nom_sitio as nombre')->get();
+        $coordenadas = Sitios::select('id','latitud', 'longitud', 'nom_sitio as nombre')->get();
         return response()->json($coordenadas);
     }
     

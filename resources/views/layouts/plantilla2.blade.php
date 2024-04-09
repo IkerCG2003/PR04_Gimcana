@@ -110,4 +110,9 @@
     <script>
         window.location = "{{ route('login') }}";
     </script>
+
+    @csrf
+    <script>
+        var csrfToken = "{{ csrf_token() }}";
+    </script>
 @endif
