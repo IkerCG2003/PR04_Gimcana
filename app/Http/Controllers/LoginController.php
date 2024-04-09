@@ -9,7 +9,7 @@
     {
         public function index()
         {
-            return view('login');
+            return view('admin');
         }
 
         public function authenticate(Request $request)

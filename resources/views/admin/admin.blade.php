@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantilla_admin')
 @section('title', 'Admin')
 @section('content')
 
@@ -8,39 +8,26 @@
             <thead>
                 <tr>
                     <th class="fila1">Id</th>
-                    <th>Nombre&nbsp;Restaurante</th>
-                    <th>Descripción</th>
-                    <th>Localización</th>
-                    <th>Contacto</th>
-                    <th>Precio&nbsp;Menú</th>
-                    <th>Tipo&nbsp;Comida</th>
-                    <th>Chef</th>
-                    {{-- <th>Estado</th> --}}
-                    <th>Creación</th>
+                    <th>Nombre Gimcana</th>
+                    <th>Descripción Gimcana</th>
+                    <th>Fecha Creación</th>
+                    <th>Fecha Modificación</th>
                     <th class="fila2">Modificación</th>
-                    <th class="nofondo"><a href="{{ route('admin.agregar') }}"><button class="agregarcrud">Agregar</button></a>
+                    {{-- <th class="nofondo"><a href="{{ route('admin.agregar') }}"><button class="agregarcrud">Agregar</button></a> --}}
                     </th>
                 </tr>
             </thead>
             <tbody id="tablaUsuariosBody">
-                @foreach ($restaurantes as $restaurante)
+                @foreach ($gimcanas as $gimcana)
                     <tr>
-                        <td class="fila1">{{ $restaurante->id }}</td>
-                        <td>{{ $restaurante->nombre_restaurante }}</td>
-                        <td class="scroll">{{ $restaurante->descripcion }}</td>
-                        <td>{{ $restaurante->localizacion }}</td>
-                        <td>{{ $restaurante->contacto }}</td>
-                        <td>{{ $restaurante->precio_menu }}</td>
-                        <td>{{ $restaurante->tipo_comida }}</td>
-                        <td>{{ $restaurante->chef }}</td>
-                        {{-- <td>{{ $restaurante->estado ? 'Activado' : 'Desactivado' }}</td> --}}
-                        <td>{{ $restaurante->created_at }}</td>
-                        <td class="fila2">{{ $restaurante->updated_at }}</td>
+                        <td class="fila1">{{ $gimcana->id }}</td>
+                        <td>{{ $gimcana->nombre_gimcana }}</td>
+                        <td class="scroll">{{ $gimcana->descripcion_gimcana }}</td>
+                        <td>{{ $gimcana->created_at }}</td>
+                        <td class="fila2">{{ $gimcana->updated_at }}</td>
                         <td class="nofondo">
-                            <a href="{{ route('admin.editar', $restaurante->id) }}"><button
-                                    class="editarcrud">Editar</button></a>
-                            <button class="eliminarcrud" type="button"
-                                onclick="eliminar('{{ $restaurante->id }}','{{ $restaurante->nombre_restaurante }}')">Eliminar</button>
+                            <a href="{{ route('admin.editar', $gimcana->id) }}"><button class="editarcrud">Editar</button></a>
+                            <button class="eliminarcrud" type="button" onclick="eliminar('{{ $gimcana->id }}','{{ $gimcana->nombre_gimcana }}')">Eliminar</button>
                         </td>
                     </tr>
                 @endforeach
@@ -61,23 +48,15 @@
                 if (ajax.status == 200) {
                     var json = JSON.parse(ajax.responseText);
                     var tabla = '';
-                    json.forEach(function(restaurante) {
-                        var str = "<tr><td class='fila1'>" + restaurante.id + "</td>";
-                        str += "<td>" + restaurante.nombre_restaurante + "</td>";
-                        str += "<td class='scroll'>" + restaurante.descripcion + "</td>";
-                        str += "<td>" + restaurante.localizacion + "</td>";
-                        str += "<td>" + restaurante.contacto + "</td>";
-                        str += "<td>" + restaurante.precio_menu + "</td>";
-                        str += "<td>" + restaurante.tipo_comida + "</td>";
-                        str += "<td>" + restaurante.chef + "</td>";
-                        // str += "<td>" + (restaurante.estado ? 'Activado' : 'Desactivado') + "</td>";
-                        str += "<td>" + restaurante.created_at + "</td>";
-                        str += "<td class='fila2'>" + restaurante.updated_at + "</td>";
+                    json.forEach(function(gimcana) {
+                        var str = "<tr><td class='fila1'>" + gimcana.id + "</td>";
+                        str += "<td>" + gimcana.nombre_gimcana + "</td>";
+                        str += "<td class='scroll'>" + gimcana.descripcion + "</td>";
+                        str += "<td>" + gimcana.created_at + "</td>";
+                        str += "<td class='fila2'>" + gimcana.updated_at + "</td>";
                         str += "<td class='nofondo'>";
-                        str += "<a href='/admin/" + restaurante.id +
-                            "'><button class='editarcrud'>Editar</button></a>";
-                        str += "<button type='button' onclick=\"eliminar('" + restaurante.id + "', '" +
-                            restaurante.nombre_restaurante + "')\" class='eliminarcrud'>Eliminar</button>";
+                        str += "<a href='/admin/" + gimcana.id + "'><button class='editarcrud'>Editar</button></a>";
+                        str += "<button type='button' onclick=\"eliminar('" + gimcana.id + "', '" + gimcana.nombre_gimcana + "')\" class='eliminarcrud'>Eliminar</button>";
                         str += "</td>";
                         str += "</tr>";
                         tabla += str;
@@ -92,9 +71,9 @@
 
         // Eliminar
 
-        function eliminar(id, nombre_restaurante) {
+        function eliminar(id, nombre_gimcana) {
             Swal.fire({
-                title: '¿Está seguro de eliminar ' + nombre_restaurante + '?',
+                title: '¿Está seguro de eliminar ' + nombre_gimcana + '?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

@@ -60,46 +60,14 @@ Route::get('grupoespera', function () {
     return app()->make(MapaController::class)->grupoespera();
 })->name('grupoespera');
 
+Route::get('/admin', function () {
+    return app()->make(AdminController::class)->admin();
+})->name('admin');
+
+Route::get('/admin/{id}', function ($id) {
+    return app()->make(AdminController::class)->editar($id);
+})->name('admin.editar');
+
 Route::get('{id}', function ($id) {
     return app()->make(MapaController::class)->menugimcana($id);
 })->name('menugimcana');
-
-
-
-
-
-
-// PAGINAS ADMIN
-
-Route::group(['prefix' => 'admin'], function () {
-
-    Route::get('admin', function () {
-        return app()->make(AdminController::class)->admin();
-    })->name('admin.admin');
-
-    // Route::get('agregar', function () {
-    //     session_start();
-    //     if (!isset($_SESSION['email'])) {
-    //         return redirect()->route('login')->with('error', 'Debes iniciar sesión para acceder a esta página');
-    //     }
-    //     return app()->make(AdminController::class)->agregar();
-    // })->name('admin.agregar');
-
-    // Route::post('agregar', [AdminController::class, 'crearRestaurante'])->name('admin.crearRestaurante');
-
-    // Route::get('{id}', function ($id) {
-    //     session_start();
-    //     if (!isset($_SESSION['email'])) {
-    //         return redirect()->route('login')->with('error', 'Debes iniciar sesión para acceder a esta página');
-    //     }
-    //     return app()->make(AdminController::class)->editar($id);
-    // })->name('admin.editar');
-
-    // Route::put('{restaurante}', function ($restaurante) {
-    //     session_start();
-    //     if (!isset($_SESSION['email'])) {
-    //         return redirect()->route('login')->with('error', 'Debes iniciar sesión para acceder a esta página');
-    //     }
-    //     return app()->make(AdminController::class)->update($restaurante);
-    // })->name('admin.update');
-});
