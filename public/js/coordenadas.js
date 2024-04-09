@@ -41,7 +41,9 @@ function agregarMarcadoresProximosUsuario(latitudUsuario, longitudUsuario, dista
                     var marker = L.marker([marcador.latitud, marcador.longitud], {icon: icono}).addTo(map);
                     marker.on('click', function() {
                         var infoSitio = document.querySelector('.infoSitio');
-                        infoSitio.innerHTML = `<p>Nombre: ${marcador.nombre}</p><p>Latitud: ${marcador.latitud}</p><p>Longitud: ${marcador.longitud}</p>`;
+                        infoSitio.innerHTML = `<h2>${marcador.nombre}</h2>
+                                               <p><span>Latitud:</span> ${marcador.latitud}</p>
+                                               <p><span>Longitud:</span> ${marcador.longitud}</p>`;
                     });
                 }
             });

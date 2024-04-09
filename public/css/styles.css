@@ -291,7 +291,24 @@ i {
 }
 
 
+/* Estilos para el título h2 */
+h2 {
+    color: #333; /* Color del texto */
+    border-bottom: 2px solid #333; /* Línea debajo del título */
+    padding-bottom: 5px; /* Espaciado entre el título y los párrafos */
+}
 
+/* Estilos para los párrafos p */
+p {
+    color: #666; /* Color del texto */
+    margin-top: 10px; /* Espaciado entre los párrafos */
+}
+
+/* Estilos para el span dentro de los párrafos */
+p span {
+    font-weight: bold; /* Texto en negrita */
+    color: #000; /* Color del texto */
+}
 
 /* MENU GIMCANA */
 
