@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('tbl_sitios', function (Blueprint $table) {
             $table->id();
             $table->string('nom_sitio', 100);
-            $table->decimal('latitud', 10, 8); 
-            $table->decimal('longitud', 11, 8); 
+            $table->string('latitud'); 
+            $table->string('longitud'); 
             $table->string('ico_sitio', 60);
             $table->timestamps();
         });
