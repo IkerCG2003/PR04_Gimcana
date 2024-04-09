@@ -31,6 +31,25 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
     return distancia; // Distancia en metros
 }
 
+// Función para enviar la solicitud POST de forma asíncrona
+function enviarSolicitudPost(url, data) {
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken // Asegúrate de incluir el token CSRF en las cabeceras
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al realizar la solicitud.');
+        }
+        return response.json();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
 // Función para agregar marcadores próximos al usuario
 function agregarMarcadoresProximosUsuario(latitudUsuario, longitudUsuario, distanciaMaxima) {
     fetch('/obtenerCoordenadas')
@@ -40,17 +59,13 @@ function agregarMarcadoresProximosUsuario(latitudUsuario, longitudUsuario, dista
                 var distancia = calcularDistancia(latitudUsuario, longitudUsuario, marcador.latitud, marcador.longitud);
                 // Verificar si la distancia al marcador es menor o igual a la distancia máxima
                 if (distancia <= distanciaMaxima) {
+                    var enFavoritos = marcador.enFavoritos; // Obtener el estado de favoritos del marcador
+                    var buttonText = enFavoritos ? 'Quitar de favoritos' : 'Añadir a favoritos'; // Determinar el texto del botón
                     var marker = L.marker([marcador.latitud, marcador.longitud, marcador.id], { icon: icono }).addTo(map);
                     marker.on('click', function () {
                         var infoSitio = document.querySelector('.infoSitio');
-                        
-                        // Verificar si el marcador está en favoritos
-                        var enFavoritos = marcador.enFavoritos;
-
-                        // Definir el texto del botón basado en si el marcador está en favoritos o no
+                        // Actualizar el texto del botón según el estado de favoritos
                         var buttonText = enFavoritos ? 'Quitar de favoritos' : 'Añadir a favoritos';
-
-                        // Agregar el ID del marcador al formulario
                         infoSitio.innerHTML =
                             `
                             <h2>${marcador.nombre}</h2>
@@ -63,16 +78,21 @@ function agregarMarcadoresProximosUsuario(latitudUsuario, longitudUsuario, dista
                                 <button id="favButton" type="submit">${buttonText}</button>
                             </form>
                         `;
-
-                        // Agregar un evento al botón para cambiar su texto cuando se haga clic
+                        // Agregar un evento al botón para enviar la solicitud POST cuando se haga clic
                         var favButton = document.getElementById('favButton');
-                        favButton.addEventListener('click', function () {
-                            // Cambiar el texto del botón
-                            favButton.textContent = enFavoritos ? 'Añadir a favoritos' : 'Quitar de favoritos';
-                            // Cambiar el estado de enFavoritos
-                            enFavoritos = !enFavoritos;
+                        favButton.addEventListener('click', function (event) {
+                            event.preventDefault(); // Evitar la acción predeterminada del formulario (recargar la página)
+                            // Cambiar el texto del botón antes de enviar la solicitud
+                            favButton.textContent = enFavoritos ? 'Añadiendo a favoritos...' : 'Quitando de favoritos...';
+                            // Enviar la solicitud POST al servidor
+                            enviarSolicitudPost('/anadirFav', { id_sitio: marcador.id })
+                            .then(data => {
+                                // Actualizar el texto del botón y el estado de enFavoritos después de recibir la respuesta del servidor
+                                favButton.textContent = enFavoritos ? 'Quitar de favoritos' : 'Añadir a favoritos';
+                                enFavoritos = !enFavoritos;
+                                console.log(data.message); // Mostrar mensaje de éxito o error en la consola
+                            });
                         });
-
                         console.log('Información del marcador:', marcador); // Agregar console.log con la información del marcador
                     });
                 }
