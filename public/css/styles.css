@@ -175,6 +175,32 @@ i {
     border: solid 2px rgb(190, 190, 190);
 }
 
+.etiquetasFavs {
+    width: 90vw;
+    position: fixed;
+    display: flex;
+    top: 12.5vh;
+    z-index: 1000;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+
+.etiquetasFavs p {
+    margin: 0 2vh;
+}
+
+.etiquetasFavs::-webkit-scrollbar {
+    height: 0;
+    background-color: transparent;
+}
+
+.etiquetasFavs::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 3vh;
+    border: solid 2px rgb(190, 190, 190);
+}
+
 .etiqueta {
     border: 0;
     display: inline-block;
@@ -190,6 +216,7 @@ i {
     border-radius: 3vh;
     background-color: white;
     width: max-content;
+    padding: 0.25vh 0;
     margin: 0 0.25vh;
     border: black solid 2px;
 }
@@ -198,9 +225,8 @@ i {
     display: inline-block;
     border-radius: 3vh;
     background-color: white;
-    width: max-content;
+    /* width: max-content; */
     margin: 0 0.25vh;
-    border: black solid 2px;
 }
 
 
@@ -266,15 +292,14 @@ i {
 }
 
 .etiquetasSitios p {
+    margin-right: 1vh;
     background-color: #f1f4f8;
     border-radius: 3vh;
-    margin: 0.5vh;
+    margin-bottom: 0;
     padding: 0.5vh 1.5vh;
-    margin-bottom: 2.5vh;
     font-weight: 500;
     font-size: 1.6vh;
     transition: 0.3s;
-    /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4); */
 }
 
 .etiquetasSitios::-webkit-scrollbar {
@@ -472,6 +497,18 @@ i {
     }
 }
 
+.botonPaginaEspera {
+    width: 100%;
+    border-radius: 3vh;
+    background-color: #f1f4f8;
+    border: 0;
+    padding: 1vh;
+    font-weight: 600;
+    font-size: 2vh;
+    margin-top: 3vh;
+
+}
+
 
 
 /* PAGINA CREAR GRUPO */
@@ -488,14 +525,14 @@ i {
     margin-bottom: 2vh;
 }
 
-.nuevogrupo label {
+.formularios label {
     width: 100%;
     font-weight: 600;
     margin: 0 0 0.5vh 1.5vh;
 }
 
-.nuevogrupo input,
-.nuevogrupo select {
+.formularios input,
+.formularios select {
     width: 100%;
     margin-bottom: 2vh;
     border-radius: 3vh;
@@ -504,7 +541,7 @@ i {
     background-color: #f1f4f8;
 }
 
-.nuevogrupo button {
+.formularios button {
     width: 100%;
     margin-top: 1vh;
     border-radius: 3vh;
@@ -512,4 +549,91 @@ i {
     padding: 1vh 2vh;
     background-color: #dadce0;
     font-weight: 600;
+}
+
+
+/* ADMINISTRADOR */
+
+.administrador {
+    width: 90vw;
+    height: 100%;
+    margin: 9vh auto;
+}
+
+.administrador {
+    width: 90vw;
+    height: 100%;
+}
+
+.objetoAdmin {
+    background-color: #dadce0;
+    padding: 2vh;
+    border-radius: 3vh;
+    margin: 2vh 0;
+}
+
+.objetoTopAdmin {
+    display: flex;
+    justify-content: space-between;
+}
+
+.objetoBotAdmin {
+    display: flex;
+    justify-content: space-between;
+}
+
+.objetoBotAdmin img {
+    width: 4vh;
+    margin: 1vh;
+}
+
+.botones {
+    margin: 0;
+    text-align: center;
+}
+
+.editarcrud,
+.eliminarcrud,
+.iniciarGimcana {
+    width: 25%;
+    margin: 0 1vh;
+    border: 0;
+    border-radius: 3vh;
+    padding: 0.5vh;
+    font-weight: 600;
+}
+
+.editarcrud,
+.editarcrud i {
+    color: white;
+    background-color: #1188d8;
+}
+
+.eliminarcrud,
+.eliminarcrud i {
+    color: white;
+    background-color: #ff473c;
+}
+
+.iniciarGimcana {
+    background-color: #c7c7c7;
+}
+
+.etiquetasSitiosAdmin {
+    display: flex;
+    overflow: auto;
+}
+
+.etiquetasSitiosAdmin p {
+    background-color: #f1f4f8;
+    border-radius: 3vh;
+    margin: 0 1vh 2vh 0;
+    padding: 0.5vh 1.5vh;
+    font-weight: 500;
+    font-size: 1.6vh;
+    transition: 0.3s;
+}
+
+.etiquetasSitiosAdmin::-webkit-scrollbar {
+    display: none;
 }

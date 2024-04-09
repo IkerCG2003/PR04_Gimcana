@@ -12,7 +12,7 @@
         <div class="infoSitio">
 
             <div class="nuevoSitio">
-                
+
             </div>
 
             @foreach ($sitios as $sitio)
@@ -26,11 +26,9 @@
                                 <p>{{ $etiquetasitio->etiquetaRel->nom_etiqueta }}</p>
                             @endif
                         @endforeach
-                    </div>
-
-                    <div class="botonesSitios">
-                        <button><i class="fa-solid fa-diamond-turn-right"></i> Como llegar</button>
-                        <button><i class="fa-solid fa-circle-info"></i> Mas info</button>
+                        <a href="{{ route('añadirEtiquetaSitio') }}">
+                            <p><i class="fa-solid fa-plus   "></i></p>
+                        </a>
                     </div>
                 </div>
                 <div class="separacionSitios"></div>
@@ -38,5 +36,13 @@
 
         </div>
     </div>
+@endsection
 
+@section('scripts')
+    <!-- Leaflet CSS + JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Tu archivo JavaScript -->
+    <script src="{{ route('js.coordenadas') }}"></script>
 @endsection

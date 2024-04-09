@@ -8,18 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('tbl_sitios', function (Blueprint $table) {
+        Schema::create('tbl_etiquetas_usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_sitio', 100);
-            $table->decimal('latitud', 10, 8); 
-            $table->decimal('longitud', 11, 8); 
-            $table->string('ico_sitio', 60);
+            $table->string('nombre_etiqueta', 30);
+            $table->unsignedBigInteger('id_usuario');
+            $table->foreign('id_usuario')->references('id')->on('tbl_usuarios');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('tbl_sitios');
+        Schema::dropIfExists('tbl_etiquetas_usuarios');
     }
 };

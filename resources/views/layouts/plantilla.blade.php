@@ -44,7 +44,7 @@
                         aria-labelledby="offcanvasNavbarLabel">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="navbar-brand"
-                                src="{{ asset('/src/LOGO_NEGRO.png') }}"></h5>
+                                    src="{{ asset('/src/LOGO_NEGRO.png') }}"></h5>
                             <button class="navbar-toggler cerrar" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
                                 aria-label="Toggle navigation">
@@ -55,9 +55,9 @@
                         </div>
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                @if (session('rol') === 0)
+                                @if (session('rol') === 2)
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href=""><i
+                                        <a class="nav-link active" aria-current="page" href="{{ route('admin') }}"><i
                                                 class="fa-solid fa-lock"></i> Admin</a>
                                     </li>
                                 @endif
@@ -93,27 +93,34 @@
             </nav>
 
             <div class="etiquetas">
-
-                @if (session('rol') === 0)
                 <button class="añadirEtqueta">
-                    <p><i class="fa-solid fa-plus"></i> Etiqueta</p>
+                    <a href="{{ route('etiquetaUsuario') }}">
+                        <p><i class="fa-solid fa-plus   "></i></p>
+                    </a>
                 </button>
-                @endif
-
-                @foreach ($favoritos as $favorito)
-                    @if ($favorito->usuario->id === session('id'))
-                        <button class="etiquetaFav">
-                            <p>{{ $favorito->sitioRel->nom_sitio }}</p>
+                @foreach ($etiquetasusuarios as $etiquetausuario)
+                    @if ($etiquetausuario->id_usuario === session('id'))
+                        <button class="etiqueta">
+                            <p>{{ $etiquetausuario->nombre_etiqueta }}</p>
                         </button>
+                    @else
                     @endif
                 @endforeach
-
                 @foreach ($etiquetas as $etiqueta)
                     <button class="etiqueta">
                         <p>{{ $etiqueta->nom_etiqueta }}</p>
                     </button>
                 @endforeach
+            </div>
 
+            <div class="etiquetasFavs">
+                @foreach ($favoritos as $favorito)
+                    @if ($favorito->usuario->id === session('id'))
+                        <button class="etiquetaFav">
+                            <p>{{ $favorito->sitioRel->nom_sitio, ' ' }}</p>
+                        </button>
+                    @endif
+                @endforeach
             </div>
 
         </header>
@@ -122,7 +129,7 @@
 
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-        <script src="{{ asset('/js/script.js') }}"></script>
+        <script src="{{ asset('/js/coordenadas.js') }}"></script>
 
     </body>
 

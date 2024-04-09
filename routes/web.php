@@ -2,37 +2,44 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\RegisterController; 
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MapaController;
+use App\Http\Controllers\CoordenadasController;
+use App\Http\Controllers\AdminController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 
 
 // SESIONES
 
-/* Rutas del login */
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('vistas.login');
-})->name('login');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
+})->name('/');
 
-/* Rutas del registro */
+Route::post('/', [LoginController::class, 'authenticate'])->name('login.post');
+
 Route::get('/register', function () {
     return view('vistas.register');
 })->name('register');
+
 Route::post('/register', [RegisterController::class, 'store'])->name('register.post');
 
-/* Ruta de logout */
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-/* Ruta de Ã©xito */
 Route::get('/mapa', [LoginController::class, 'mapa'])->name('mapa');
 
+
+
+
+
+
+// JAVASCRIPT
+
+Route::get('/obtenerCoordenadas', [CoordenadasController::class, 'obtenerCoordenadas']);
+
+Route::get('/js/coordenadas.js', [CoordenadasController::class, 'jsCoordenadas'])->name('js.coordenadas');
 
 
 
@@ -44,6 +51,14 @@ Route::get('/mapa', [LoginController::class, 'mapa'])->name('mapa');
 Route::get('mapa', function () {
     return app()->make(MapaController::class)->mapa();
 })->name('mapa');
+
+Route::get('etiquetaUsuario', function () {
+    return app()->make(MapaController::class)->etiquetaUsuario();
+})->name('etiquetaUsuario');
+
+Route::get('añadirEtiquetaSitio', function ($id) {
+    return app()->make(MapaController::class)->añadirEtiquetaSitio($id);
+})->name('añadirEtiquetaSitio');
 
 Route::get('todasgimcanas', function () {
     return app()->make(MapaController::class)->todasgimcanas();
@@ -67,4 +82,21 @@ Route::get('creargrupo/{idGimcana}', function ($id) {
 
 Route::post('creargrupo', [MapaController::class, 'nuevoGrupo'])->name('nuevoGrupo');
 
-// Route::post('/menugimcana/{id_grupo}', 'MapaController@unirseAGrupo')->name('menugimcana');
+Route::post('menugimcana', [MapaController::class, 'unirseGrupo'])->name('unirseGrupo');
+
+Route::post('etiquetaUsuario', [MapaController::class, 'etiquetaUsuarioCrear'])->name('etiquetaUsuarioCrear');
+
+Route::post('añadirEtiquetaSitio', [MapaController::class, 'añadirEtiquetaSitioAccion'])->name('añadirEtiquetaSitioAccion');
+
+
+
+
+// ADMIN
+
+Route::get('/admin/admin', function () {
+    return app()->make(AdminController::class)->admin();
+})->name('admin');
+
+Route::get('/admin/{id}', function ($id) {
+    return app()->make(AdminController::class)->editar($id);
+})->name('admin.editar');

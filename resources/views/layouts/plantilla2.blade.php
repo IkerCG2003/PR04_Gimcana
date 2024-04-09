@@ -54,9 +54,9 @@
                         </div>
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                @if (session('rol') === 0)
+                                @if (session('rol') === 2)
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href=""><i
+                                        <a class="nav-link active" aria-current="page" href="{{ route('admin') }}"><i
                                                 class="fa-solid fa-lock"></i> Admin</a>
                                     </li>
                                 @endif
@@ -101,7 +101,7 @@
 
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-        <script src="{{ asset('/js/script.js') }}"></script>
+        <script src="{{ asset('/js/coordenadas.js') }}"></script>
 
     </body>
 
@@ -117,3 +117,5 @@
         window.location = "{{ route('login') }}";
     </script>
 @endif
+
+

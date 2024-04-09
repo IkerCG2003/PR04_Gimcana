@@ -2,8 +2,15 @@
 @section('title', 'Menu Gimcana')
 @section('content')
 
+    @foreach ($grupos as $grupo)
+    @endforeach
+    @foreach ($usuariosgrupos as $usuariogrupo)
+    @endforeach
+
     <div class="esperagimcana">
-        <h4>Tu grupo: Grupo1</h4>
+        @if ($usuariogrupo->id_usuario === session('id'))
+            <h4>{{ $usuariogrupo->grupoRel->nombre_grupo }}</h4>
+        @endif
         <br>
         <h5>Espere mientras empieza la gimcana</h5>
         <div class="contenedor-loader">

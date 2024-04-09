@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\favoritos;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,5 +21,12 @@ class DatabaseSeeder extends Seeder
         $this->call(EtiquetasSitiosSeeder::class);
         $this->call(PruebasSeeder::class);
         $this->call(PruebasSitiosSeeder::class);
+        $this->call(GimcanasSeeder::class);
+        $this->call(GruposSeeder::class);
+        $this->call(GruposGimcanasSeeder::class);
+        $this->call(UsuariosGruposSeeder::class);
+        $this->call(FavoritosSeeder::class);
+        $this->call(EtiquetasUsuariosSeeder::class);
+        $this->call(EtiquetasUsuariosSitiosSeeder::class);
     }
 }

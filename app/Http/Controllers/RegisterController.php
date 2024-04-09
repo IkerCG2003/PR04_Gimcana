@@ -48,6 +48,6 @@ class RegisterController extends Controller
         // Guardar el usuario
         $usuario->save();
 
-        return redirect()->route('login')->with('success', 'Usuario registrado exitosamente.');
+        return redirect()->route('/')->with('success', 'Usuario registrado exitosamente.');
     }
 }

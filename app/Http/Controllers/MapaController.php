@@ -11,6 +11,8 @@ use App\Models\grupos;
 use App\Models\etiquetassitios;
 use App\Models\favoritos;
 use App\Models\usuariosgrupos;
+use App\Models\etiquetasusuarios;
+
 
 
 class MapaController extends Controller
@@ -23,7 +25,8 @@ class MapaController extends Controller
         $gimcanas = gimcanas::all();
         $etiquetassitios = etiquetassitios::all();
         $favoritos = favoritos::all();
-        return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios', 'favoritos'));
+        $etiquetasusuarios = etiquetasusuarios::all();
+        return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios', 'favoritos', 'etiquetasusuarios'));
     }
 
     public function todasgimcanas()
@@ -33,7 +36,8 @@ class MapaController extends Controller
         $gimcanas = gimcanas::all();
         $grupos = grupos::all();
         $gruposgimcanas = gruposgimcanas::all();
-        return view('todasgimcanas', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos'));
+        $usuariosgrupos = usuariosgrupos::all();
+        return view('todasgimcanas', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'usuariosgrupos'));
     }
 
     public function favoritos()
@@ -51,17 +55,24 @@ class MapaController extends Controller
     {
         $etiquetas = etiquetas::all();
         $sitios = sitios::all();
-        // $gimcanas = gimcanas::all();
-        // $gruposgimcanas = gruposgimcanas::all();
-        // $gruposgimcanas = gruposgimcanas::where('id_gimcana', $id)->get();
+
         $gruposgimcanas = gruposgimcanas::all();
-        // $gimcana = gimcanas::find($id);
         $grupos = grupos::all();
-        // $gimcanas = gimcanas::all();
         $gimcanas = gimcanas::where('id', $id)->get();
         $usuariosgrupos = usuariosgrupos::all();
-        // $gruposgimcanas = gruposgimcanas::where('id_gincana', $gincana)->get();
         return view('menugimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'usuariosgrupos', 'id'));
+    }
+
+    public function unirseGrupo(Request $request)
+    {
+        $id_gimcana = $request->input('id_gimcana');
+
+        $usuariosgrupos = new usuariosgrupos();
+        $usuariosgrupos->id_usuario = session('id');
+        $usuariosgrupos->id_grupo = $request->id_gimcana;
+        $usuariosgrupos->save();
+
+        return redirect()->route('menugimcana', ['id' => $id_gimcana]);
     }
 
     public function grupoespera()
@@ -71,7 +82,8 @@ class MapaController extends Controller
         $gimcanas = gimcanas::all();
         $grupos = grupos::all();
         $gruposgimcanas = gruposgimcanas::all();
-        return view('grupoespera', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos'));
+        $usuariosgrupos = usuariosgrupos::all();
+        return view('grupoespera', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'usuariosgrupos'));
     }
 
     public function creargrupo($id)
@@ -91,20 +103,15 @@ class MapaController extends Controller
             'capacidad_grupo' => 'required|integer',
         ]);
 
-        // Crear un nuevo grupo
         $grupo = new grupos();
         $grupo->nombre_grupo = $request->nombre_grupo;
         $grupo->capacidad_grupo = $request->capacidad_grupo;
         $grupo->id_usuario = session('id');
         $grupo->save();
 
-        // Obtener el ID del grupo recién creado
         $id_grupo = $grupo->id;
-
-        // Obtener el ID de la gimcana desde el formulario
         $id_gimcana = $request->input('id_gimcana');
 
-        // Asociar el grupo recién creado con la gimcana
         $gruposgimcanas = new gruposgimcanas();
         $gruposgimcanas->id_grupo = $id_grupo;
         $gruposgimcanas->id_gimcana = $id_gimcana;
@@ -115,33 +122,61 @@ class MapaController extends Controller
         $usuariosgrupos->id_grupo = $id_grupo;
         $usuariosgrupos->save();
 
-        // Redirigir al usuario a la página menugimcana
         return redirect()->route('menugimcana', ['id' => $id_gimcana]);
     }
 
 
+    public function etiquetaUsuario()
+    {
+        $etiquetas = etiquetas::all();
+        $sitios = sitios::all();
+        $gimcanas = gimcanas::all();
+        $grupos = grupos::all();
+        $gruposgimcanas = gruposgimcanas::all();
+        $etiquetasusuarios = etiquetasusuarios::all();
+        return view('etiquetaUsuario', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'etiquetasusuarios'));
+    }
+
+    public function etiquetaUsuarioCrear(Request $request)
+    {
+        $request->validate([
+            'nombre_etiqueta' => 'required|string|max:30',
+        ]);
+
+        $etiquetasusuarios = new etiquetasusuarios();
+        $etiquetasusuarios->nombre_etiqueta = $request->nombre_etiqueta;
+        $etiquetasusuarios->id_usuario = session('id');
+        $etiquetasusuarios->save();
+
+        return redirect()->route('mapa');
+    }
 
 
+    public function añadirEtiquetaSitio($id)
+    {
+        $etiquetas = etiquetas::all();
+        $sitios = sitios::where('id', $id)->get();
+        $gimcanas = gimcanas::all();
+        $grupos = grupos::all();
+        $gruposgimcanas = gruposgimcanas::all();
+        $etiquetasusuarios = etiquetasusuarios::all();
+        return view('etiquetaUsuario', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'etiquetasusuarios', 'id'));
+    }
 
+    public function añadirEtiquetaSitioAccion(Request $request)
+    {
+        $request->validate([
+            'nombre_etiqueta' => 'required|string|max:30',
+        ]);
 
+        // $id_gimcana = $request->input('id_gimcana');
+        // $gruposgimcanas->id_gimcana = $id_gimcana;
 
+        $etiquetasusuarios = new etiquetasusuarios();
+        $etiquetasusuarios->nombre_etiqueta = $request->nombre_etiqueta;
+        $etiquetasusuarios->id_usuario = session('id');
+        $etiquetasusuarios->save();
 
-
-
-
-
-
-
-
-    // public function unirseAGrupo($id_grupo)
-    // {
-    //     // Aquí puedes agregar la lógica para insertar un nuevo registro en tbl_usuarios_grupos
-    //     $usuarioGrupo = new usuariosgrupos();
-    //     $usuarioGrupo->id_usuario = session('id');
-    //     $usuarioGrupo->id_grupo = $id_grupo;
-    //     $usuarioGrupo->save();
-
-    //     // Puedes redirigir a una página de éxito o volver a la página anterior
-    //     return redirect()->back()->with('success', 'Te has unido al grupo exitosamente.');
-    // }
+        return redirect()->route('mapa');
+    }
 }

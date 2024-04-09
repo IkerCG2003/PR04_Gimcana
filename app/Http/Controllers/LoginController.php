@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('login');
+        return view('/');
     }
 
     public function authenticate(Request $request)
@@ -38,8 +38,7 @@ class LoginController extends Controller
             $request->session()->put('email', $user->email_usuario);
             $request->session()->put('rol', $user->rol_usuario);
             if ($user->rol_usuario == '2') {
-                // Redirigir al usuario administrador a la página de administración
-                return redirect()->intended('/admin');
+                return redirect()->intended('/admin/admin');
             } else {
                 return redirect()->intended('/mapa');
             }
@@ -58,7 +57,7 @@ class LoginController extends Controller
             return view('mapa');
         } else {
             // El usuario no ha iniciado sesión, redirigir al inicio de sesión con un mensaje de error
-            return redirect()->route('login')->with('error', 'Debes iniciar sesión para acceder a esta página');
+            return redirect()->route('/')->with('error', 'Debes iniciar sesión para acceder a esta página');
         }
     }
 
@@ -67,6 +66,6 @@ class LoginController extends Controller
         // Eliminar las variables de sesión
         $request->session()->flush();
         // Redirigir al usuario a la página de inicio de sesión
-        return redirect()->route('login')->with('success', 'Sesión cerrada correctamente');
+        return redirect()->route('/')->with('success', 'Sesión cerrada correctamente');
     }
 }
