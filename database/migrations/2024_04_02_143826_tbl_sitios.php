@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('nom_sitio', 100);
             $table->string('latitud'); 
             $table->string('longitud'); 
+            $table->string('descripcion', 2000)->nullable(); 
             $table->string('ico_sitio', 60);
             $table->timestamps();
         });

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\sitios;
+
+use App\Models\Sitios; 
 
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class CoordenadasController extends Controller
 {
     public function obtenerCoordenadas()
     {
-        $coordenadas = Sitios::select('id','latitud', 'longitud', 'nom_sitio as nombre')->get();
+        $coordenadas = Sitios::all(); 
         return response()->json($coordenadas);
     }
     

@@ -37,7 +37,7 @@ function enviarSolicitudPost(url, data) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrfToken 
+            'X-CSRF-TOKEN': csrfToken // Asegúrate de incluir el token CSRF en las cabeceras
         },
         body: JSON.stringify(data)
     })
@@ -68,10 +68,9 @@ function agregarMarcadoresProximosUsuario(latitudUsuario, longitudUsuario, dista
                         var buttonText = enFavoritos ? 'Quitar de favoritos' : 'Añadir a favoritos';
                         infoSitio.innerHTML =
                             `
-                            <h2>${marcador.nombre}</h2>
-                            <p><span>Latitud:</span> ${marcador.latitud}</p>
-                            <p><span>Longitud:</span> ${marcador.longitud}</p>
-                            <p><span>ID del marcador:</span> ${marcador.id}</p> 
+                            <h6>${marcador.nom_sitio}</h6>
+                            <p>${marcador.descripcion}</p>
+                            <img src="./img/sitios/${marcador.nom_sitio}.jpg" class="imagen_sitio" alt="Imagen del sitio">                           
                             <form class="anadirFav" id="anadirFav" action="/anadirFav" method="POST">
                                 <input type="hidden" name="_token" value="${csrfToken}"> 
                                 <input type="hidden" name="id_sitio" value="${marcador.id}">
