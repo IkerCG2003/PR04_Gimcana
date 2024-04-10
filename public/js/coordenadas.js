@@ -37,7 +37,7 @@ function enviarSolicitudPost(url, data) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrfToken // Asegúrate de incluir el token CSRF en las cabeceras
+            'X-CSRF-TOKEN': csrfToken 
         },
         body: JSON.stringify(data)
     })
