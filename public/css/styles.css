@@ -300,18 +300,25 @@ h2 {
 
 /* Estilos para los párrafos p */
 p {
-    color: #666; /* Color del texto */
-    margin-top: 10px; /* Espaciado entre los párrafos */
+    color: #666; 
+    margin-top: 10px; 
 }
 
 /* Estilos para el span dentro de los párrafos */
 p span {
-    font-weight: bold; /* Texto en negrita */
-    color: #000; /* Color del texto */
+    font-weight: bold; 
+    color: #000; 
+}
+
+#favButton {
+    border: #000 solid 1px;
+    border-radius: 3vh;
+    background-color: #dadce0;
+    border-radius: 3vh;
+    margin: 0 0.5vh;
 }
 
 /* MENU GIMCANA */
-
 .menugimcana {
     width: 90vw;
     height: 100%;

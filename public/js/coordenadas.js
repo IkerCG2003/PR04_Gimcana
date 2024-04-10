@@ -136,5 +136,20 @@ function agregarMarcadorUbicacionUsuario(latitud, longitud) {
     });
 }
 
-// Llamar a la función para agregar el marcador y área de cercanía en la ubicación del usuario
-agregarMarcadorUbicacionUsuario(41.34979245296962, 2.107716891526477);
+// Función para obtener la ubicación del usuario mediante el GPS
+function obtenerUbicacionUsuario() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var latitud = position.coords.latitude;
+            var longitud = position.coords.longitude;
+            agregarMarcadorUbicacionUsuario(latitud, longitud);
+        }, function(error) {
+            console.error('Error al obtener la ubicación del usuario:', error);
+        });
+    } else {
+        console.error('El navegador no soporta Geolocalización.');
+    }
+}
+
+// Llamar a la función para obtener la ubicación del usuario
+obtenerUbicacionUsuario();
