@@ -29,6 +29,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 /* Ruta de Éxito */
 Route::get('/mapa', [MapaController::class, 'mapa'])->name('mapa');
 
+Route::get('/gincana', [MapaController::class, 'gincana'])->name('gincana');
+
 /* Coordenadas */
 Route::get('/obtenerCoordenadas', [CoordenadasController::class, 'obtenerCoordenadas']);
 Route::get('/js/coordenadas.js', [CoordenadasController::class, 'jsCoordenadas'])->name('js.coordenadas');

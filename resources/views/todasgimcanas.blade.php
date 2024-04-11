@@ -1,4 +1,4 @@
-@extends('layouts/plantilla2')
+@extends('layouts/plantillaMenu')
 @section('title', 'Gimcanas')
 @section('content')
 

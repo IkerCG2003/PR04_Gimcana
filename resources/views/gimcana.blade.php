@@ -1,4 +1,4 @@
-@extends('layouts.plantillaMapa')
+@extends('layouts.plantillaGincana')
 @section('title', 'Gincana')
 @section('content')
 
@@ -28,5 +28,5 @@
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
 <!-- Tu archivo JavaScript -->
-<script src="{{ asset('/js/puntos.js') }}"></script>
+<script src="{{ asset('/js/coordenadas.js') }}"></script>
 @endsection

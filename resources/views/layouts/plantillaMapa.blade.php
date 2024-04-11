@@ -19,17 +19,16 @@
         <script src="https://kit.fontawesome.com/8e6d3dccce.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
     <body>
+
         <header>
             <nav class="navbar bg-body-tertiary fixed-top">
                 <div class="container-fluid">
-                    <a href="{{ route('mapa') }}"><img class="navbar-brand"
-                            src="{{ asset('/src/LOGO_NEGRO.png') }}"></a>
-                    <a href="{{ route('mapa') }}">
-                        <h4>GeoMap</h4>
-                    </a>
+                    <img class="navbar-brand" src="{{ asset('/src/LOGO_NEGRO.png') }}">
+                    <h4>GeoMap</h4>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
                         aria-label="Toggle navigation">
@@ -56,30 +55,21 @@
                                             class="fa-solid fa-user"></i> {{ session('nombre') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('mapa') }}"><i
-                                            class="fa-solid fa-map"></i> Mapa</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="#"><i
                                             class="fa-solid fa-bookmark"></i> Guardados</a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('menugimcana') }}"><i class="fa-solid fa-flag"></i> Gimcanas</a>
-                            </li>
-                            @foreach ($gimcanas as $gimcana)
-                            <a href=""><p>{{$gimcana->nombre_gimcana}}</p></a>
-                        @endforeach --}}
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href=""><i
-                                            class="fa-solid fa-location-dot"></i> Gimcanas</a>
+                                    <a class="nav-link active" aria-current="page"
+                                        href="{{ route('todasgimcanas') }}"><i class="fa-solid fa-location-dot"></i>
+                                        Gimcanas</a>
                                 </li>
                                 @foreach ($gimcanas as $gimcana)
                                     <a href="{{ route('menugimcana', $gimcana->id) }}">
                                         <p>{{ $gimcana->nombre_gimcana }}</p>
                                     </a>
                                 @endforeach
-                                @csrf
                                 <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
                                     <li class="nav-item">
                                         <i class="fa-solid fa-right-from-bracket"></i> <button
                                             type="submit">Logout</button>
@@ -90,15 +80,28 @@
                     </div>
                 </div>
             </nav>
+
+            <div class="etiquetas">
+                @foreach ($etiquetas as $etiqueta)
+                    <button class="etiqueta">
+                        <p>{{ $etiqueta->nom_etiqueta }}</p>
+                    </button>
+                @endforeach
+            </div>
+
         </header>
+
+        <div class="infoUsuario" data-id-usuario="{{ session('id') }}"></div>
 
         @yield('content')
 
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        {{-- <script src="{{ asset('/js/coordenadas.js') }}"></script> --}}
+        <script src="{{ asset('/js/puntos.js') }}"></script>
 
-        <script src="{{ asset('/js/coordenadas.js') }}"></script>
     </body>
+
     </html>
 @else
     {{-- Establecer el mensaje de error --}}
@@ -115,4 +118,5 @@
     <script>
         var csrfToken = "{{ csrf_token() }}";
     </script>
+
 @endif

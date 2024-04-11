@@ -28,6 +28,21 @@ class MapaController extends Controller
         // }
     }
 
+    public function gincana()
+    {
+        $etiquetas = etiquetas::all();
+        $sitios = sitios::all();
+        $gruposgimcanas = gruposgimcanas::all();
+        $gimcanas = gimcanas::all();
+        $etiquetassitios = etiquetassitios::all();
+        return view('gimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios'));
+        // if (!isset($_SESSION['email'])) {
+        //     return view('login');
+        // } else {
+        //     return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios'));
+        // }
+    }
+
     public function todasgimcanas()
     {
         $etiquetas = etiquetas::all();
