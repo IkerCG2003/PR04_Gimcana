@@ -45,3 +45,12 @@ Route::get('{id}', [MapaController::class, 'menugimcana'])->name('menugimcana');
 
 /* Añadir a favoritos */
 Route::post('/anadirFav', [FavoritosController::class, 'añadirFav'])->name('añadirFav');
+
+// Etiqueta
+Route::get('etiquetaUsuario', function () {
+    return app()->make(MapaController::class)->etiquetaUsuario();
+})->name('etiquetaUsuario');
+
+Route::get('añadirEtiquetaSitio', function ($id) {
+    return app()->make(MapaController::class)->añadirEtiquetaSitio($id);
+})->name('añadirEtiquetaSitio');
