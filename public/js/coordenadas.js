@@ -6,13 +6,13 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Obtener la ubicación del usuario
-navigator.geolocation.getCurrentPosition(function(position) {
+navigator.geolocation.getCurrentPosition(function (position) {
     var userLat = position.coords.latitude;
     var userLng = position.coords.longitude;
 
     // Crear marcador para la ubicación del usuario
     var userMarker = L.marker([userLat, userLng]).addTo(map);
-}, function(error) {
+}, function (error) {
     console.error('Error al obtener la ubicación del usuario:', error);
 });
 
@@ -33,7 +33,7 @@ fetch('/obtenerCoordenadas')
                 shadowAnchor: [4, 62],
                 popupAnchor: [-3, -76]
             });
-            
+
             var marker = L.marker([marcador.latitud, marcador.longitud], { icon: iconoMarcador }).addTo(map);
             marker.on('click', function () {
                 var infoSitio = document.querySelector('.infoSitio');
@@ -47,3 +47,14 @@ map.on('click', function () {
     var infoSitio = document.querySelector('.infoSitio');
     infoSitio.innerHTML = '';
 });
+
+function mostrarDatos() {
+    var form = document.getElementById('frmetiquetas');
+    var formdata = new FormData(form);
+
+    var csrfToken = document.querySelector('meta[name="csrf_token"]').getAttribute('content');
+    formdata.append('_token', csrfToken);
+
+    var ajax = new XMLHttpRequest();
+    console.log(ajax);
+}

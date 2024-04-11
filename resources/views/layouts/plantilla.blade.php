@@ -106,10 +106,15 @@
                     @else
                     @endif
                 @endforeach
+
                 @foreach ($etiquetas as $etiqueta)
-                    <button class="etiqueta">
-                        <p>{{ $etiqueta->nom_etiqueta }}</p>
-                    </button>
+                    <form action="/obtenerCoordenadas" method="get"  id="frmetiquetas">
+                        @csrf
+                        <input type="hidden" value="{{ $etiqueta->id }}">
+                        <button class="etiqueta">
+                            <p>{{ $etiqueta->nom_etiqueta }}</p>
+                        </button>
+                    </form>
                 @endforeach
             </div>
 
