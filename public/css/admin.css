@@ -25,7 +25,8 @@ body {
 
 header {
     font-weight: 500;
-    margin: auto;
+    /* margin: auto; */
+    margin-left: 30%;
     justify-content: space-between;
     text-align: center;
     align-items: center;

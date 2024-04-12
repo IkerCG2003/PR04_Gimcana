@@ -5,6 +5,8 @@
     use Illuminate\Support\Facades\Auth;
     use App\Models\Usuarios;
 
+use function Psy\debug;
+
     class LoginController extends Controller
     {
         public function index()
@@ -59,7 +61,7 @@
             // Verificar si el usuario ha iniciado sesión
             if($request->session()->has('nombre') && $request->session()->has('apellido') && $request->session()->has('email') && $request->session()->has('rol')) {
                 // El usuario ha iniciado sesión, mostrar la página de éxito
-                return view('mapa');
+                return view('admin');
             } 
 
             else 

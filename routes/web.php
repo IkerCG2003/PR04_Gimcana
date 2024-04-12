@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController; 
 use App\Http\Controllers\MapaController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminGimcanaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,14 +60,26 @@ Route::get('grupoespera', function () {
     return app()->make(MapaController::class)->grupoespera();
 })->name('grupoespera');
 
-Route::get('/admin', function () {
-    return app()->make(AdminController::class)->admin();
-})->name('admin');
+// Admin Gimcanas
 
-Route::get('/admin/{id}', function ($id) {
-    return app()->make(AdminController::class)->editar($id);
-})->name('admin.editar');
+Route::get('/admin/gimcana', [AdminGimcanaController::class, 'admin'])->name('admin');
 
-Route::get('{id}', function ($id) {
-    return app()->make(MapaController::class)->menugimcana($id);
-})->name('menugimcana');
+Route::post('/listar', [AdminGimcanaController::class, 'listar'])->name('listar');
+
+Route::post('/admin/gimcana/agregar', function () {
+    return app()->make(AdminGimcanaController::class)->agregar();
+})->name('admin.agregar');
+
+// Route::post('/registrar', [AdminGimcanaController::class, 'agregarEditar'])->name('register');
+
+// Route::get('/admin/gimcana/{id}', function ($id) {
+//     return app()->make(AdminGimcanaController::class)->editar($id);
+// })->name('admin.editar');
+
+// Route::post('/eliminar', [AdminGimcanaController::class, 'eliminar'])->name('eliminar');
+
+// route::put('/admin/gimcana/{gimcana}',[AdminGimcanaController::class, 'update'])->name('admin.update');
+
+// Route::get('{id}', function ($id) {
+//     return app()->make(MapaController::class)->menugimcana($id);
+// })->name('menugimcana');

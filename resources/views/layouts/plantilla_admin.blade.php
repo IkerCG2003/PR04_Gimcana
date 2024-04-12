@@ -7,6 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="csrf_token" content="{{ csrf_token() }}">
         <title>@yield('title')</title>
         <link rel="shortcut icon" href="/src/logos/LOGO3.png" type="image/x-icon">
         <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
@@ -33,20 +34,33 @@
                     {{-- <a href="{{ route('vistas.todo') }}"><img src="/src/logos/LOGO2.png"></a> --}}
 
                     <div>
-                        {{-- <a class="nav-link" href="{{ route('vistas.todo') }}" role="button">
-                            <p class="tipoRestaurantes"><i class="fa-solid fa-lock-open"></i> Pagina Principal</p>
-                        </a> --}}
+                        <a class="nav-link" href="{{ route('admin') }}" role="button">
+                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        </a>
+                        <a class="nav-link" href="{{ route('admin') }}" role="button">
+                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        </a>
+                        <a class="nav-link" href="{{ route('admin') }}" role="button">
+                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        </a>
+                        <a class="nav-link" href="{{ route('admin') }}" role="button">
+                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        </a>
+                        <a class="nav-link" href="{{ route('admin') }}" role="button">
+                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        </a>
+                        <a class="nav-link" href="{{ route('admin') }}" role="button">
+                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        </a>
 
-                        {{-- <p class="tipoRestaurantes"><i class="fa-solid fa-user"></i> {{ ucfirst($userNombre) }}</p> --}}
-
-                        <form method="post" action="{{ route('logout') }}">
-                            @csrf
-                            <a href="{{ route('logout') }}">
-                                <p class="tipoRestaurantes"><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
-                            </a>
-                        </form>
+                        
                     </div>
-
+                    <form method="post" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ route('logout') }}">
+                            <p class="tipoRestaurantes"><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
+                        </a>
+                    </form>
                 </div>
             </nav>
         </header>
