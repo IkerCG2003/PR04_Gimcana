@@ -10,47 +10,53 @@ class SitiosSeeder extends Seeder
     public function run(): void
     {
         DB::table('tbl_sitios')->insert([
-            'nom_sitio' => 'Café Alonso',
-            'latitud' => 41.349252649956874,
-            'longitud' => 2.1075779199600224, 
+            'nom_sitio' => 'Escola Jaume',
+            'latitud' => 41.355428,
+            'longitud' => 2.109697, 
             'ico_sitio' => 'sitio1',
-            'descripcion' => "En este café te servirán recetas de cocina italiana. Los cocineros de Alonso's Cafe se esfuerzan al máximo para dar a sus visitantes una tierna pasta. Su sorprendente café hará que tu comida esté incluso más deliciosa, lo que, con seguridad, te hará volver.",
+            'descripcion' => "Escuela privada concertada, laica, cooperativa de enseñanza y pluralista. Se manifiestan apolíticos, aconfesionales y respetuosos con todas las formas de pensar. Disponen de aulas multimedia y equipadas con TAC.",
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('tbl_sitios')->insert([
-            'nom_sitio' => 'Caprabo',
-            'latitud' => 41.34841797892616,
-            'longitud' => 2.107935352230124, 
+            'nom_sitio' => 'Estación de tren de Bellvitge',
+            'latitud' => 41.353957,
+            'longitud' => 2.115084, 
             'ico_sitio' => 'sitio2',
-            'descripcion' => "Caprabo es la compañía de supermercados de referencia en Cataluña. Fundada en el año 1959, es la empresa de supermercados más antigua de España. Caprabo tiene una red de unos 300 supermercados en las zonas estratégicas de Cataluña. En la empresa trabajan más de 6.000 personas.",
+            'descripcion' => "Bellvitge | Gornal ​ es una estación ferroviaria situada en la ciudad española de Hospitalet de Llobregat muy cerca de Barcelona. Forma parte de las líneas R2, R2Sud y R2Nord y R15 de Rodalies de Catalunya.",
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('tbl_sitios')->insert([
-            'nom_sitio' => 'Bodega Bar Ermita',
-            'latitud' => 41.34892954464191, 
-            'longitud' => 2.1072421649185955, 
+            'nom_sitio' => 'Centre Cultural Bellvitge-Gornal',
+            'latitud' => 41.35140048699621, 
+            'longitud' => 2.114090664567742, 
             'ico_sitio' => 'sitio3',
-            'descripcion' => "Restaurante informal, con tienda, que ofrece cocina gallega tradicional, productos agrícolas y vinos.",
+            'descripcion' => "El Centro Cultural Bellvitge Gornal es un equipamiento cultural, adscrito al distrito VI, que tiene como objetivos la formación de aprendizajes relacionados con las nuevas tecnologías, las artes, la salud y el ocio. También es el espacio donde toman forma varios proyectos relacionados con la música, el teatro, la danza, la imagen, la literatura y las artes plásticas.",
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('tbl_sitios')->insert([
-            'nom_sitio' => 'Parroquia de Nuestra Señora de Bellvitge',
-            'latitud' => 41.34924534871412,
-            'longitud' => 2.10823940146935, 
+            'nom_sitio' => 'Metro Bellvitge',
+            'latitud' => 41.351502,
+            'longitud' => 2.110263, 
             'ico_sitio' => 'sitio5',
-            'descripcion' => "Iglesia católica en L'Hospitalet de Llobregat.",
+            'descripcion' => "Bellvitge Rambla Marina es una estación de la línea 1 del Metro de Barcelona.
+
+            La estación está situada debajo la rambla Marina en Hospitalet de Llobregat y se inauguró en 1989.
+            
+            Bellvitge junto a Hospital de Bellvitge fueron las primeras estaciones inauguradas del metro de Barcelona en tener ascensores.
+            
+            En 2022, el nombre de la estación cambió de Bellvitge a Bellvitge Rambla Marina, en el seno de varios cambios de nombres de estaciones motivados por dos razones: estaciones enlazadas que unifican su nombre o estaciones no enlazadas que actualizan su nombre. Aquí se trataba del segundo caso, ya que la estación de Cercanías Renfe de la zona se llamaba también Bellvitge, la cual a su vez fue actualizada a Bellvitge/Gornal.",
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('tbl_sitios')->insert([
-            'nom_sitio' => 'Escola Ramón Muntaner',
-            'latitud' => 41.34911665768707,
-            'longitud' => 2.1089584780538666, 
+            'nom_sitio' => 'Estatua Parque de Bellvitge (Consecuencias de equilibrios)',
+            'latitud' => 41.34781129176029,
+            'longitud' => 2.110567889029027, 
             'ico_sitio' => 'sitio6',
-            'descripcion' => "Aprendizaje del inglés desde la educación infantil. Proyecto interdisciplinar en las tres lenguas. Proyecto Science en primaria (damos contenidos de medio en lengua inglesa). Aprendizaje mediante el uso de ordenadores y tabletas digitales en grupos reducidos desde I3. Introducción a la robótica (Bee-Bots, Scratch, Lego Wedo) en los distintos niveles educativos. Aulas conectadas en red. Atención a la diversidad de necesidades educativas con el objetivo de conseguir las competencias que permitan el desarrollo personal y escolar del alumnado. Tándem científico con la asociación Funbrain. Formamos parte de la Red de escuelas sostenibles de Hospitalet para fomentar y alcanzar hábitos para ser respetuosos con el medio ambiente.",
+            'descripcion' => "“Consecuencias de equilibrios” es un monumento que el Ayuntamiento de Hospitalet y la Asociación de Vecinos de Bellvitge encargaron, por el 30 aniversario del barrio, al escultor Ferran Soriano, vi del mismo barrio",
             'created_at' => now(),
             'updated_at' => now()
         ]);

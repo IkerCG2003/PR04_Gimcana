@@ -41,13 +41,13 @@ function enviarSolicitudPost(url, data) {
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error al realizar la solicitud.');
-        }
-        return response.json();
-    })
-    .catch(error => console.error('Error:', error));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al realizar la solicitud.');
+            }
+            return response.json();
+        })
+        .catch(error => console.error('Error:', error));
 }
 
 // Función para agregar marcadores próximos al usuario
@@ -56,17 +56,15 @@ function agregarMarcadoresProximosUsuario(latitudUsuario, longitudUsuario, dista
         .then(response => response.json())
         .then(data => {
             data.forEach(marcador => {
-                var distancia = calcularDistancia(latitudUsuario, longitudUsuario, marcador.latitud, marcador.longitud);
-                // Verificar si la distancia al marcador es menor o igual a la distancia máxima
-                    var enFavoritos = marcador.enFavoritos; // Obtener el estado de favoritos del marcador
-                    var buttonText = enFavoritos ? 'Quitar de favoritos' : 'Añadir a favoritos'; // Determinar el texto del botón
-                    var marker = L.marker([marcador.latitud, marcador.longitud, marcador.id], { icon: icono }).addTo(map);
-                    marker.on('click', function () {
-                        var infoSitio = document.querySelector('.infoSitio');
-                        // Actualizar el texto del botón según el estado de favoritos
-                        var buttonText = enFavoritos ? 'Quitar de favoritos' : 'Añadir a favoritos';
-                        infoSitio.innerHTML =
-                            `
+                var enFavoritos = marcador.enFavoritos; // Obtener el estado de favoritos del marcador
+                var buttonText = enFavoritos ? 'Quitar de favoritos' : 'Añadir a favoritos'; // Determinar el texto del botón
+                var marker = L.marker([marcador.latitud, marcador.longitud, marcador.id], { icon: icono }).addTo(map);
+                marker.on('click', function () {
+                    var infoSitio = document.querySelector('.infoSitio');
+                    // Actualizar el texto del botón según el estado de favoritos
+                    var buttonText = enFavoritos ? 'Quitar de favoritos' : 'Añadir a favoritos';
+                    infoSitio.innerHTML =
+                        `
                             <h6>${marcador.nom_sitio}</h6>
                             <p>${marcador.descripcion}</p>
                             <img src="./img/sitios/${marcador.nom_sitio}.jpg" class="imagen_sitio" alt="Imagen del sitio">                           
@@ -76,29 +74,29 @@ function agregarMarcadoresProximosUsuario(latitudUsuario, longitudUsuario, dista
                                 <button id="favButton" type="submit">${buttonText}</button>
                             </form>
                         `;
-                        // Agregar un evento al botón para enviar la solicitud POST cuando se haga clic
-                        var favButton = document.getElementById('favButton');
-                        favButton.addEventListener('click', function (event) {
-                            event.preventDefault(); // Evitar la acción predeterminada del formulario (recargar la página)
-                            // Cambiar el texto del botón antes de enviar la solicitud
-                            favButton.textContent = enFavoritos ? 'Añadiendo a favoritos...' : 'Quitando de favoritos...';
-                            // Enviar la solicitud POST al servidor
-                            enviarSolicitudPost('/anadirFav', { id_sitio: marcador.id })
+                    // Agregar un evento al botón para enviar la solicitud POST cuando se haga clic
+                    var favButton = document.getElementById('favButton');
+                    favButton.addEventListener('click', function (event) {
+                        event.preventDefault(); // Evitar la acción predeterminada del formulario (recargar la página)
+                        // Cambiar el texto del botón antes de enviar la solicitud
+                        favButton.textContent = enFavoritos ? 'Añadiendo a favoritos...' : 'Quitando de favoritos...';
+                        // Enviar la solicitud POST al servidor
+                        enviarSolicitudPost('/anadirFav', { id_sitio: marcador.id })
                             .then(data => {
                                 // Actualizar el texto del botón y el estado de enFavoritos después de recibir la respuesta del servidor
                                 favButton.textContent = enFavoritos ? 'Quitar de favoritos' : 'Añadir a favoritos';
                                 enFavoritos = !enFavoritos;
                                 console.log(data.message); // Mostrar mensaje de éxito o error en la consola
                             });
-                        });
-                        console.log('Información del marcador:', marcador); // Agregar console.log con la información del marcador
                     });
+                    console.log('Información del marcador:', marcador); // Agregar console.log con la información del marcador
+                });
             });
         })
         .catch(error => console.error('Error al obtener coordenadas:', error));
 }
 
-// Función para añadir marcador y área de cercanía en ubicación actual del usuario
+// Función para agregar marcador y área de cercanía en ubicación actual del usuario
 function agregarMarcadorUbicacionUsuario(latitud, longitud) {
     // Agregar marcador en la ubicación del usuario
     var marcadorUsuario = L.marker([latitud, longitud], { draggable: true }).addTo(map);
@@ -133,5 +131,40 @@ function agregarMarcadorUbicacionUsuario(latitud, longitud) {
     });
 }
 
-// Llamar a la función para agregar el marcador y área de cercanía en la ubicación del usuario
-agregarMarcadorUbicacionUsuario(41.34979245296962, 2.107716891526477);
+// Función para obtener la ubicación actual del usuario
+function obtenerUbicacionUsuario() {
+    return new Promise((resolve, reject) => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+        } else {
+            reject(new Error('La geolocalización no está disponible en este navegador.'));
+        }
+    });
+}
+
+// Llamar a la función para obtener la ubicación del usuario
+obtenerUbicacionUsuario()
+    .then((position) => {
+        // Extraer la latitud y longitud de la posición obtenida
+        const latitud = position.coords.latitude;
+        const longitud = position.coords.longitude;
+
+        // Llamar a la función para agregar el marcador y área de cercanía en la ubicación del usuario
+        agregarMarcadorUbicacionUsuario(latitud, longitud);
+    })
+    .catch((error) => {
+        console.error('Error al obtener la ubicación del usuario:', error);
+    });
+
+// Función para mostrar popup con latitud y longitud al hacer clic en el mapa
+function mostrarPopupCoordenadas(e) {
+    var latitud = e.latlng.lat.toFixed(6); // Obtener la latitud del evento de clic en el mapa y redondear a 6 decimales
+    var longitud = e.latlng.lng.toFixed(6); // Obtener la longitud del evento de clic en el mapa y redondear a 6 decimales
+    L.popup()
+        .setLatLng(e.latlng)
+        .setContent(`Latitud: ${latitud}<br>Longitud: ${longitud}`)
+        .openOn(map);
+}
+
+// Agregar evento de clic al mapa para mostrar el popup con latitud y longitud
+map.on('click', mostrarPopupCoordenadas);

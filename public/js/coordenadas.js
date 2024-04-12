@@ -1,6 +1,6 @@
 var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-var map = L.map('map').setView([41.34979245296962, 2.107716891526477], 17);
+var map = L.map('map').setView([0, 0], 17); // Inicializa el mapa con una vista inicial genérica
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -135,5 +135,21 @@ function agregarMarcadorUbicacionUsuario(latitud, longitud) {
     });
 }
 
-// Llamar a la función para agregar el marcador y área de cercanía en la ubicación del usuario
-agregarMarcadorUbicacionUsuario(41.34979245296962, 2.107716891526477);
+// Obtener la ubicación del dispositivo del usuario
+function obtenerUbicacionUsuario() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var latitud = position.coords.latitude;
+            var longitud = position.coords.longitude;
+            map.setView([latitud, longitud], 17); // Centra el mapa en la ubicación del usuario
+            agregarMarcadorUbicacionUsuario(latitud, longitud);
+        }, function (error) {
+            console.error('Error al obtener la ubicación del dispositivo:', error);
+        });
+    } else {
+        console.error('La geolocalización no es compatible con este navegador.');
+    }
+}
+
+// Llamar a la función para obtener la ubicación del usuario
+obtenerUbicacionUsuario();
