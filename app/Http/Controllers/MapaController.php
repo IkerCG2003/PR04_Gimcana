@@ -9,10 +9,6 @@ use App\Models\gruposgimcanas;
 use App\Models\gimcanas;
 use App\Models\grupos;
 use App\Models\etiquetassitios;
-use App\Models\favoritos;
-use App\Models\usuariosgrupos;
-use App\Models\etiquetasusuarios;
-
 
 
 class MapaController extends Controller
@@ -24,9 +20,27 @@ class MapaController extends Controller
         $gruposgimcanas = gruposgimcanas::all();
         $gimcanas = gimcanas::all();
         $etiquetassitios = etiquetassitios::all();
-        $favoritos = favoritos::all();
-        $etiquetasusuarios = etiquetasusuarios::all();
-        return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios', 'favoritos', 'etiquetasusuarios'));
+        return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios'));
+        // if (!isset($_SESSION['email'])) {
+        //     return view('login');
+        // } else {
+        //     return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios'));
+        // }
+    }
+
+    public function gincana()
+    {
+        $etiquetas = etiquetas::all();
+        $sitios = sitios::all();
+        $gruposgimcanas = gruposgimcanas::all();
+        $gimcanas = gimcanas::all();
+        $etiquetassitios = etiquetassitios::all();
+        return view('gimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios'));
+        // if (!isset($_SESSION['email'])) {
+        //     return view('login');
+        // } else {
+        //     return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios'));
+        // }
     }
 
     public function todasgimcanas()
@@ -36,147 +50,62 @@ class MapaController extends Controller
         $gimcanas = gimcanas::all();
         $grupos = grupos::all();
         $gruposgimcanas = gruposgimcanas::all();
-        $usuariosgrupos = usuariosgrupos::all();
-        return view('todasgimcanas', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'usuariosgrupos'));
-    }
-
-    public function favoritos()
-    {
-        $etiquetas = etiquetas::all();
-        $sitios = sitios::all();
-        $gruposgimcanas = gruposgimcanas::all();
-        $gimcanas = gimcanas::all();
-        $etiquetassitios = etiquetassitios::all();
-        $favoritos = favoritos::all();
-        return view('favoritos', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios', 'favoritos'));
+        return view('todasgimcanas', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos'));
     }
 
     public function menugimcana($id)
     {
         $etiquetas = etiquetas::all();
         $sitios = sitios::all();
+        // $gimcanas = gimcanas::all();
+        // $gruposgimcanas = gruposgimcanas::all();
+        $gruposgimcanas = gruposgimcanas::where('id_gimcana', $id)->get();
 
-        $gruposgimcanas = gruposgimcanas::all();
+        // $gimcana = gimcanas::find($id);
         $grupos = grupos::all();
-        $gimcanas = gimcanas::where('id', $id)->get();
-        $usuariosgrupos = usuariosgrupos::all();
-        return view('menugimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'usuariosgrupos', 'id'));
-    }
+        $gimcanas = gimcanas::all();
 
-    public function unirseGrupo(Request $request)
-    {
-        $id_gimcana = $request->input('id_gimcana');
-
-        $usuariosgrupos = new usuariosgrupos();
-        $usuariosgrupos->id_usuario = session('id');
-        $usuariosgrupos->id_grupo = $request->id_gimcana;
-        $usuariosgrupos->save();
-
-        return redirect()->route('menugimcana', ['id' => $id_gimcana]);
+        // $gruposgimcanas = gruposgimcanas::where('id_gincana', $gincana)->get();
+        return view('menugimcana', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos'));
     }
 
     public function grupoespera()
     {
+        // $gincana = session('id_gincana');
         $etiquetas = etiquetas::all();
         $sitios = sitios::all();
         $gimcanas = gimcanas::all();
         $grupos = grupos::all();
         $gruposgimcanas = gruposgimcanas::all();
-        $usuariosgrupos = usuariosgrupos::all();
-        return view('grupoespera', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'usuariosgrupos'));
+        return view('grupoespera', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos'));
     }
 
-    public function creargrupo($id)
+    public function creargrupo()
     {
+        // $gincana = session('id_gincana');
         $etiquetas = etiquetas::all();
         $sitios = sitios::all();
-        $gimcanas = gimcanas::where('id', $id)->get();
+        $gimcanas = gimcanas::all();
         $grupos = grupos::all();
         $gruposgimcanas = gruposgimcanas::all();
-        return view('creargrupo', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'id'));
+        return view('creargrupo', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos'));
     }
 
     public function nuevoGrupo(Request $request)
     {
         $request->validate([
+            'numero_grupo' => 'required|integer',
             'nombre_grupo' => 'required|string|max:30',
             'capacidad_grupo' => 'required|integer',
         ]);
 
         $grupo = new grupos();
+        $grupo->numero_grupo = $request->numero_grupo;
         $grupo->nombre_grupo = $request->nombre_grupo;
         $grupo->capacidad_grupo = $request->capacidad_grupo;
-        $grupo->id_usuario = session('id');
         $grupo->save();
 
-        $id_grupo = $grupo->id;
-        $id_gimcana = $request->input('id_gimcana');
-
-        $gruposgimcanas = new gruposgimcanas();
-        $gruposgimcanas->id_grupo = $id_grupo;
-        $gruposgimcanas->id_gimcana = $id_gimcana;
-        $gruposgimcanas->save();
-
-        $usuariosgrupos = new usuariosgrupos();
-        $usuariosgrupos->id_usuario = session('id');
-        $usuariosgrupos->id_grupo = $id_grupo;
-        $usuariosgrupos->save();
-
-        return redirect()->route('menugimcana', ['id' => $id_gimcana]);
+        return redirect()->route('menugimcana');
     }
 
-
-    public function etiquetaUsuario()
-    {
-        $etiquetas = etiquetas::all();
-        $sitios = sitios::all();
-        $gimcanas = gimcanas::all();
-        $grupos = grupos::all();
-        $gruposgimcanas = gruposgimcanas::all();
-        $etiquetasusuarios = etiquetasusuarios::all();
-        return view('etiquetaUsuario', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'etiquetasusuarios'));
-    }
-
-    public function etiquetaUsuarioCrear(Request $request)
-    {
-        $request->validate([
-            'nombre_etiqueta' => 'required|string|max:30',
-        ]);
-
-        $etiquetasusuarios = new etiquetasusuarios();
-        $etiquetasusuarios->nombre_etiqueta = $request->nombre_etiqueta;
-        $etiquetasusuarios->id_usuario = session('id');
-        $etiquetasusuarios->save();
-
-        return redirect()->route('mapa');
-    }
-
-
-    public function añadirEtiquetaSitio($id)
-    {
-        $etiquetas = etiquetas::all();
-        $sitios = sitios::where('id', $id)->get();
-        $gimcanas = gimcanas::all();
-        $grupos = grupos::all();
-        $gruposgimcanas = gruposgimcanas::all();
-        $etiquetasusuarios = etiquetasusuarios::all();
-        return view('etiquetaUsuario', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'grupos', 'etiquetasusuarios', 'id'));
-    }
-
-    public function añadirEtiquetaSitioAccion(Request $request)
-    {
-        $request->validate([
-            'nombre_etiqueta' => 'required|string|max:30',
-        ]);
-
-        // $id_gimcana = $request->input('id_gimcana');
-        // $gruposgimcanas->id_gimcana = $id_gimcana;
-
-        $etiquetasusuarios = new etiquetasusuarios();
-        $etiquetasusuarios->nombre_etiqueta = $request->nombre_etiqueta;
-        $etiquetasusuarios->id_usuario = session('id');
-        $etiquetasusuarios->save();
-
-        return redirect()->route('mapa');
-    }
 }
