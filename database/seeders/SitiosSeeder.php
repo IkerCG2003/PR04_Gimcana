@@ -10,7 +10,7 @@ class SitiosSeeder extends Seeder
     public function run(): void
     {
         DB::table('tbl_sitios')->insert([
-            'nom_sitio' => 'Escola Jaume',
+            'nom_sitio' => 'Escola Jaume Balmes',
             'latitud' => 41.355428,
             'longitud' => 2.109697, 
             'ico_sitio' => 'sitio1',
