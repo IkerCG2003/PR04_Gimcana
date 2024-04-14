@@ -1,5 +1,5 @@
 @extends('layouts.plantilla_admin')
-@section('title', 'Agregar Restaurante')
+@section('title', 'Agregar Gimcana')
 @section('content')
 
     <div class="editar">
@@ -14,7 +14,7 @@
                 </ul>
             </div>
         @endif
-        <form class="formAgregarGimcana" id="formAgregarGimcana" action="{{ route('admin.crearGimcana') }}" method="POST">
+        <form class="formAgregarGimcana" id="formAgregarGimcana" action="{{ route('crearGimcana') }}" method="POST">
             @csrf
             <label for="nombre_gimcana">Nombre del Gimcana:</label>
             <input type="text" id="nombre_gimcana" name="nombre_gimcana" value="{{ old('nombre_gimcana') }}" required>

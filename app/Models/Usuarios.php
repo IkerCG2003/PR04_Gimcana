@@ -22,4 +22,8 @@ class Usuarios extends Model
     protected $hidden = [
         'pwd_usuario',
     ];
+
+    public function grupos() {
+        return $this->hasMany(grupos::class);
+    }
 }

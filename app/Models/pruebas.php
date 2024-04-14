@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class etiquetas extends Model
+class pruebas extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_etiquetas';
+    protected $table = 'tbl_pruebas';
 
     public function sitios() {
-        return $this->belongsToMany(sitios::class,'tbl_etiquetas_sitios','id_etiqueta','id_sitio');
+        return $this->belongsToMany(sitios::class,'tbl_pruebas_sitios','id_prueba','id_sitio');
     }
+
 }

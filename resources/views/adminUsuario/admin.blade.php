@@ -8,12 +8,15 @@
             <thead>
                 <tr>
                     <th class="fila1">Id</th>
-                    <th>Nombre Gimcana</th>
-                    <th>Descripción Gimcana</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Coreo</th>
+                    <th>Contraseña</th>
+                    <th>Rol</th>
                     <th>Fecha Creación</th>
                     <th>Fecha Modificación</th>
                     <th class="fila2">Modificación</th>
-                    <th class="nofondo"><a href="{{ route('agregar') }}"><button class="agregarcrud">Agregar</button></a>
+                    <th class="nofondo"><a href="{{ route('agregarUsuario') }}"><button class="agregarcrud">Agregar</button></a>
                     </th>
                 </tr>
             </thead>
@@ -32,7 +35,7 @@
         var csrfToken = document.querySelector('meta[name="csrf_token"]').getAttribute('content');
         formdata.append('_token', csrfToken);
         var ajax = new XMLHttpRequest();
-        ajax.open('POST', '/listar');
+        ajax.open('POST', '/listarUsuario');
         ajax.onload = function () {
             var str = "";
             if (ajax.status == 200) {
@@ -40,12 +43,15 @@
                 var tabla = '';
                 json.forEach(function (item) {
                     str = "<tr><td>" + item.id + "</td>";
-                    str = str + "<td>" + item.nombre_gimcana + "</td>";
-                    str += "<td>" + item.descripcion_gimcana + "</td>";
+                    str = str + "<td>" + item.nom_usuario + "</td>";
+                    str += "<td>" + item.apell_usuario + "</td>";
+                    str += "<td>" + item.email_usuario + "</td>";
+                    str += "<td>" + item.pwd_usuario + "</td>";
+                    str += "<td>" + item.rol_usuario + "</td>";
                     str += "<td>" + item.created_at + "</td>";
                     str += "<td>" + item.updated_at + "</td>";                    
                     str += "<td>";
-                    str += "<a href='/admin/gimcana/editar/" + item.id + "'><button class='editarcrud'>Editar</button></a>";
+                    str += "<a href='/admin/usuario/editar/" + item.id + "'><button class='editarcrud'>Editar</button></a>";
                     str += "<button class='eliminarcrud' type='button' onclick='Eliminar(" + item.id + ")'>Eliminar</button>";                    
                     str += "</td> ";
                     str += "</tr>";
@@ -78,7 +84,7 @@
                     formdata.append('id', id);
                     debugger;
                     var ajax = new XMLHttpRequest();
-                    ajax.open('POST', '/eliminar');
+                    ajax.open('POST', '/eliminarUsuario');
                     ajax.onload = function () {
                         // console.log(ajax.responseText);
                         // console.log(ajax.open);

@@ -8,7 +8,7 @@
             <form action="{{route('admin.update',$gimcana)}}" method="post">
                 @csrf
                 @method('put')
-                <input type="text" name="idp" id="idp" value="{{ $gimcana->id }}" readonly>
+                <input type="hidden" name="idp" id="idp" value="{{ $gimcana->id }}" readonly>
                 <label for="nombre_gimcana">Nombre de la Gimcana:</label>
                 <input type="text" id="nombre_gimcana" name="nombre_gimcana" value="{{ $gimcana->nombre_gimcana }}">
                 <label for="descripcion">Descripción:</label>

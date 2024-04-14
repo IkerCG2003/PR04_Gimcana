@@ -154,7 +154,7 @@ header img {
     font-size: 1.75vh;
 }
 
-/* AGREGAR RESTAURANTE */
+/* AGREGAR GIMCANA */
 
 .agregarcrud {
     font-weight: 700;
@@ -203,7 +203,7 @@ header img {
     border-radius: 8px;
 }
 
-.formEditarRestaurante {
+.formEditarGimcana {
     display: flex;
     flex-direction: column;
 }

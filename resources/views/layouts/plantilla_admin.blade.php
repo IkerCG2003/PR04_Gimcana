@@ -35,22 +35,22 @@
 
                     <div>
                         <a class="nav-link" href="{{ route('admin') }}" role="button">
-                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                            <p class="menu"></i>Gimcanas</p>
                         </a>
-                        <a class="nav-link" href="{{ route('admin') }}" role="button">
-                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        <a class="nav-link" href="{{ route('adminGrupo') }}" role="button">
+                            <p class="menu"></i>Grupos</p>
                         </a>
-                        <a class="nav-link" href="{{ route('admin') }}" role="button">
-                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        <a class="nav-link" href="{{ route('adminUsuario') }}" role="button">
+                            <p class="menu"></i>Usuarios</p>
                         </a>
-                        <a class="nav-link" href="{{ route('admin') }}" role="button">
-                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        <a class="nav-link" href="{{ route('adminPrueba') }}" role="button">
+                            <p class="menu"></i>Pruebas</p>
                         </a>
-                        <a class="nav-link" href="{{ route('admin') }}" role="button">
-                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        <a class="nav-link" href="{{ route('adminSitio') }}" role="button">
+                            <p class="menu"></i>Sitios</p>
                         </a>
-                        <a class="nav-link" href="{{ route('admin') }}" role="button">
-                            <p class="tipoRestaurantes"></i>Usuarios</p>
+                        <a class="nav-link" href="{{ route('adminEtiqueta') }}" role="button">
+                            <p class="menu"></i>Etiquetas</p>
                         </a>
 
                         
@@ -58,7 +58,7 @@
                     <form method="post" action="{{ route('logout') }}">
                         @csrf
                         <a href="{{ route('logout') }}">
-                            <p class="tipoRestaurantes"><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
+                            <p class="menu"><i class="fa-solid fa-right-from-bracket"></i> Logout</p>
                         </a>
                     </form>
                 </div>
