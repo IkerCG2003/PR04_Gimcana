@@ -41,6 +41,8 @@ Route::get('/obtenerCoordenadas', [CoordenadasController::class, 'obtenerCoorden
 
 Route::get('/js/coordenadas.js', [CoordenadasController::class, 'jsCoordenadas'])->name('js.coordenadas');
 
+// -------
+Route::post('/obtenerCoordenadasfiltro', [CoordenadasController::class, 'obtenerCoordenadasfiltro']);
 
 
 

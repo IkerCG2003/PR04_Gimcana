@@ -20,6 +20,4 @@ class etiquetassitios extends Model
     {
         return $this->belongsTo('App\Models\etiquetas', 'id_etiqueta', 'id');
     }
-
-    
 }

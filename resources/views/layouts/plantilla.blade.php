@@ -12,6 +12,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="csrf_token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" href="{{ asset('/src/location-dot-solid(1).svg') }}" type="image/x-icon">
         <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -101,16 +102,24 @@
                 @foreach ($etiquetasusuarios as $etiquetausuario)
                     @if ($etiquetausuario->id_usuario === session('id'))
                         <button class="etiqueta">
-                            <p>{{ $etiquetausuario->nombre_etiqueta }}</p>
+                            <p>asdasdasdasd{{ $etiquetausuario->nombre_etiqueta }}</p>
                         </button>
                     @else
                     @endif
                 @endforeach
+                {{-- Formulario --}}
+                <form action="/obtenerCoordenadas" method="post" id="frmetiquetas" onsubmit="filtrar(event)">
+                    @csrf
+                    <input type="hidden" name="id" value="0">
+                    <button class="etiqueta">
+                        <p>Todo</p>
+                    </button>
+                </form>
 
                 @foreach ($etiquetas as $etiqueta)
-                    <form action="/obtenerCoordenadas" method="get"  id="frmetiquetas">
+                    <form action="/obtenerCoordenadas" method="post" id="frmetiquetas" onsubmit="filtrar(event)">
                         @csrf
-                        <input type="hidden" value="{{ $etiqueta->id }}">
+                        <input type="hidden" name="id" value="{{ $etiqueta->id }}">
                         <button class="etiqueta">
                             <p>{{ $etiqueta->nom_etiqueta }}</p>
                         </button>
