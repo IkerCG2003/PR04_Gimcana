@@ -17,12 +17,12 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:9|max:20',
+            'password' => 'required|min:6|max:20',
         ], [
             'email.required' => 'El correo electrónico es obligatorio',
             'email.email' => 'El correo electrónico debe ser una dirección de correo válida',
             'password.required' => 'La contraseña es obligatoria',
-            'password.min' => 'La contraseña debe tener al menos 9 caracteres',
+            'password.min' => 'La contraseña debe tener al menos 6 caracteres',
             'password.max' => 'La contraseña no debe tener más de 20 caracteres',
         ]);
     

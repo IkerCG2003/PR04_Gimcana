@@ -68,6 +68,11 @@
                                         <p>{{ $gimcana->nombre_gimcana }}</p>
                                     </a>
                                 @endforeach
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page"
+                                        href="{{ route('rutasInteres') }}"><i class="fa-solid fa-circle-exclamation"></i>
+                                        Rutas de interés</a>
+                                </li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <li class="nav-item">
