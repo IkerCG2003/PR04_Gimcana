@@ -29,6 +29,11 @@ class MapaController extends Controller
         return view('mapa', compact('etiquetas', 'sitios', 'gruposgimcanas', 'gimcanas', 'etiquetassitios', 'favoritos', 'etiquetasusuarios'));
     }
 
+    public function interes()
+    {
+        return view('interes');
+    }
+
     public function todasgimcanas()
     {
         $etiquetas = etiquetas::all();

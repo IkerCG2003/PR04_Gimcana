@@ -30,7 +30,16 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/mapa', [LoginController::class, 'mapa'])->name('mapa');
 
+// Interes
 
+// Route::post('creargrupo', [MapaController::class, 'nuevoGrupo'])->name('nuevoGrupo');
+// Route::post('añadirEtiquetaSitio', [MapaController::class, 'añadirEtiquetaSitioAccion'])->name('añadirEtiquetaSitioAccion');
+
+Route::get('interes', function () {
+    return app()->make(MapaController::class)->interes();
+})->name('interes');
+
+// Route::post('/interes', [MapaController::class, 'interesaccion'])->name('interes');
 
 
 

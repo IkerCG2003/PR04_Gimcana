@@ -41,6 +41,8 @@
                         <span class="toggler-icon middle-bar"></span>
                         <span class="toggler-icon bottom-bar"></span>
                     </button>
+
+                    <a href="{{ route('interes') }}">Rutas de interes</a>
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                         aria-labelledby="offcanvasNavbarLabel">
                         <div class="offcanvas-header">
