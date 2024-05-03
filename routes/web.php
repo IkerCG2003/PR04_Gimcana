@@ -20,7 +20,7 @@ Route::get('/', function () {
 /* Rutas del login */
 Route::get('/login', function () {return view('vistas.login');})->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
-
+ 
 /* Rutas del registro */
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.post');
